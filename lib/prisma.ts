@@ -1,14 +1,9 @@
+/**
+ * @see: https://www.prisma.io/docs/orm/more/help-and-troubleshooting/help-articles/nextjs-prisma-client-dev-practices
+ */
 import { PrismaClient } from '@prisma/client'
+import 'server-only'
 
-let prisma: PrismaClient
+export const prisma = global.prisma || new PrismaClient({ log: ['query'] })
 
-if (process.env.NODE_ENV === 'production') {
-  prisma = new PrismaClient()
-} else {
-  if (!global.prisma) {
-    global.prisma = new PrismaClient()
-  }
-  prisma = global.prisma
-}
-
-export default prisma
+if (process.env.NODE_ENV != 'production') global.prisma = prisma
