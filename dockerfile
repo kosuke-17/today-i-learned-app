@@ -1,14 +1,14 @@
-FROM node:latest
+# FROM node:latest
 
-WORKDIR /app
+# WORKDIR /app
 
-COPY package.json .
-COPY prisma ./prisma
+# COPY package.json .
+# COPY prisma ./prisma
 
-RUN yarn
+# RUN yarn
 
-COPY . .
+# COPY . .
 
-RUN yarn build
+# RUN yarn build
 
-CMD ["yarn", "start"]
+# CMD ["yarn", "start"]

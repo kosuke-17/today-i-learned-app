@@ -12,14 +12,15 @@ services:
       - 5432:5432
     volumes:
       - ./dist/data:/var/lib/til-app/data
-  app:
-    build:
-      context: .
-    tty: true
-    volumes:
-      - .:/usr/src
-    environment:
-      - WATCHPACK_POLLING=true
-    command: sh -c "npm run dev"
-    ports:
-      - '3000:3000'
+  # TODO: appもコンテナで管理する
+  # app:
+  #   build:
+  #     context: .
+  #   tty: true
+  #   volumes:
+  #     - .:/usr/src
+  #   environment:
+  #     - WATCHPACK_POLLING=true
+  #   command: sh -c "npm run dev"
+  #   ports:
+  #     - '3000:3000'
