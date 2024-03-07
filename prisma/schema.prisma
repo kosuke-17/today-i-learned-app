@@ -11,13 +11,12 @@ model User {
   id            String       @default(cuid()) @id
   name          String?
   email         String?   @unique
-  createdAt     DateTime  @default(now()) @map(name: "created_at")
-  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
-  posts         Post[]
-  @@map(name: "users")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  articles      Article[]
 }
 
-model Post {
+model Article {
   id        String     @default(cuid()) @id
   title     String
   content   String?
