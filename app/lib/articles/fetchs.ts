@@ -1,5 +1,5 @@
 import { prisma } from '@/lib/prisma'
-import { ArticleSelect, selectArticle } from './defs'
+import { ArticleSelect, selectArticle } from './definitions'
 
 export const fetchArticles = async (): Promise<ArticleSelect[]> => {
   try {
