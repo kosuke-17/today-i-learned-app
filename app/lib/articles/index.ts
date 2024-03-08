@@ -13,3 +13,17 @@ export const fetchArticles = async () => {
     throw new Error('Failed to fetch aritcles.')
   }
 }
+
+export const fetchArticleById = async (id: string) => {
+  try {
+    const article: ArticleSelect | null = await prisma.article.findFirst({
+      where: { id },
+      select: selectArticle,
+    })
+
+    return article
+  } catch (e) {
+    console.error('Database Error:', e)
+    throw new Error('Failed to fetch aritcle.')
+  }
+}
