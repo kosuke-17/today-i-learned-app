@@ -1,9 +1,9 @@
 import { prisma } from '@/lib/prisma'
 import { ArticleSelect, selectArticle } from './defs'
 
-export const fetchArticles = async () => {
+export const fetchArticles = async (): Promise<ArticleSelect[]> => {
   try {
-    const articles: ArticleSelect[] = await prisma.article.findMany({
+    const articles = await prisma.article.findMany({
       select: selectArticle,
     })
 
@@ -14,9 +14,11 @@ export const fetchArticles = async () => {
   }
 }
 
-export const fetchArticleById = async (id: string) => {
+export const fetchArticleById = async (
+  id: string
+): Promise<ArticleSelect | null> => {
   try {
-    const article: ArticleSelect | null = await prisma.article.findFirst({
+    const article = await prisma.article.findFirst({
       where: { id },
       select: selectArticle,
     })
