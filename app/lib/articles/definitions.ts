@@ -15,3 +15,4 @@ export const selectArticle = Prisma.validator<Prisma.ArticleSelect>()({
 })
 
 export type ArticleCreate = Omit<Article, 'id'>
+export type ArticleUpdate = ArticleCreate
