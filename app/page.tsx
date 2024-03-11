@@ -1,4 +1,4 @@
-import ArticleList from './articles/pages'
+import ArticleList from './features/articles/ArticleList'
 
 export default async function Home() {
   return (

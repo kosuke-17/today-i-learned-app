@@ -3,6 +3,8 @@ import { ArticleSelect } from '@/app/lib/articles/definitions'
 
 export default async function ArticleList() {
   const articles = await fetchArticles()
+
+  if (!articles.length) return <>記事が存在しません</>
   return (
     <div>
       {articles.map((article) => {
