@@ -5,8 +5,12 @@ export default async function ArticleList() {
   const articles = await fetchArticles()
 
   if (!articles.length) return <>記事が存在しません</>
-  return (
+
+	return (
     <div>
+      <div className="bottom-1 font-bold text-4xl flex justify-center">
+        記事一覧
+      </div>
       {articles.map((article) => {
         return <Article article={article} key={article.id} />
       })}
