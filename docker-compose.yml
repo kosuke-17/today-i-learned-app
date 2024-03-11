@@ -2,7 +2,10 @@ version: '3'
 
 services:
   postgres:
+    container_name: 'til-db'
     image: postgres:14.0
+    networks:
+      - app_network
     environment:
       POSTGRES_USER: til-app
       POSTGRES_PASSWORD: til-app
@@ -12,15 +15,27 @@ services:
       - 5432:5432
     volumes:
       - ./dist/data:/var/lib/til-app/data
-  # TODO: appもコンテナで管理する
-  # app:
-  #   build:
-  #     context: .
-  #   tty: true
-  #   volumes:
-  #     - .:/usr/src
-  #   environment:
-  #     - WATCHPACK_POLLING=true
-  #   command: sh -c "npm run dev"
-  #   ports:
-  #     - '3000:3000'
+
+  til-app:
+    container_name: 'til-app'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - app_network
+    restart: always
+    command: yarn dev
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=postgresql://til-app:til-app@postgres:5432/til-app
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - '3000:3000'
+    tty: true
+
+networks:
+  app_network:
+    driver: bridge

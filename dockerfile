@@ -1,14 +1,14 @@
-# FROM node:latest
+FROM node:18.17.0
+ 
+WORKDIR /app
 
-# WORKDIR /app
+RUN npm install -g npm@10.5.0
 
-# COPY package.json .
-# COPY prisma ./prisma
+COPY ./package.json ./
+COPY ./yarn.lock ./
+COPY ./prisma ./
 
-# RUN yarn
+RUN yarn --frozen-lockfile
+RUN npx prisma generate
 
-# COPY . .
-
-# RUN yarn build
-
-# CMD ["yarn", "start"]
+CMD ["yarn", "run", "dev"]
