@@ -1,5 +1,5 @@
-import { fetchArticles } from '@/app/lib/articles/fetchs'
 import { ArticleSelect } from '@/app/lib/articles/definitions'
+import { fetchArticles } from '@/app/lib/articles/fetchs'
 
 export default async function ArticleList() {
   const articles = await fetchArticles()
