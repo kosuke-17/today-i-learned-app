@@ -22,7 +22,6 @@ const Article = ({ article }: { article: ArticleSelect }) => {
   return (
     <div>
       <div>タイトル: {article.title}</div>
-      <div>内容: {article.content}</div>
       <div>著者: {article.author?.name}</div>
     </div>
   )

@@ -1,5 +1,5 @@
+import { ArticleSelect, selectArticle } from '@/app/lib/articles/definitions'
 import { prisma } from '@/lib/prisma'
-import { ArticleSelect, selectArticle } from './definitions'
 
 export const fetchArticles = async (): Promise<ArticleSelect[]> => {
   try {
@@ -15,7 +15,7 @@ export const fetchArticles = async (): Promise<ArticleSelect[]> => {
 }
 
 export const fetchArticleById = async (
-  id: string
+  id: string,
 ): Promise<ArticleSelect | null> => {
   try {
     const article = await prisma.article.findFirst({

@@ -2,7 +2,7 @@
   "tabWidth": 2,
   "semi": false,
   "singleQuote": true,
-  "importOrder": ["^@/app/(.*)$", "^@/(.*)$"],
+  "importOrder": ["^@foo/(.*)$", "^@/(.*)$", "^[./]"],
   "importOrderSeparation": true,
   "plugins": [
     "prettier-plugin-tailwindcss",
