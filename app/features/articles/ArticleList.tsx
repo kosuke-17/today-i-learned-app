@@ -20,9 +20,13 @@ export default async function ArticleList() {
 
 const Article = ({ article }: { article: ArticleSelect }) => {
   return (
-    <div>
-      <div>タイトル: {article.title}</div>
-      <div>著者: {article.author?.name}</div>
+    <div className="max-w-xs rounded overflow-hidden shadow-lg">
+      {/* TODO: 絵文字入れたい */}
+      <div className="px-6 py-4">
+        <p className="text-xl font-semibold">{article.title}</p>
+        <div>{article.createdAt.toDateString()}</div>
+        <div>{article.author?.name}</div>
+      </div>
     </div>
   )
 }

@@ -5,6 +5,7 @@ export type ArticleSelect = Omit<Article, 'content'> & {
 }
 export const selectArticle = Prisma.validator<Prisma.ArticleSelect>()({
   id: true,
+  createdAt: true,
   title: true,
   authorId: true,
   published: true,
