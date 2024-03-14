@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import { ArticleSelect } from '@/app/lib/articles/definitions'
 import { fetchArticles } from '@/app/lib/articles/fetchs'
 import { formatYYYYMMDD } from '@/lib/date'
@@ -13,21 +15,23 @@ export default async function ArticleList() {
         記事一覧
       </div>
       {articles.map((article) => {
-        return <Article article={article} key={article.id} />
+        return <ArticleCard article={article} key={article.id} />
       })}
     </div>
   )
 }
 
-const Article = ({ article }: { article: ArticleSelect }) => {
+const ArticleCard = ({ article }: { article: ArticleSelect }) => {
   return (
     <div className="max-w-xs rounded overflow-hidden shadow-lg">
       {/* TODO: 絵文字入れたい */}
-      <div className="px-6 py-4">
-        <p className="text-3xl font-semibold">{article.title}</p>
-        <div>{formatYYYYMMDD(article.createdAt)}</div>
-        <div>{article.author?.name}</div>
-      </div>
+      <Link href={`/articles/${article.id}`}>
+        <div className="px-6 py-4">
+          <p className="text-3xl font-semibold">{article.title}</p>
+          <div>{formatYYYYMMDD(article.createdAt)}</div>
+          <div>{article.author?.name}</div>
+        </div>
+      </Link>
     </div>
   )
 }
