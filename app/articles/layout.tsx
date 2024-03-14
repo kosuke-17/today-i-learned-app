@@ -14,7 +14,7 @@ export default function Layout({
   return (
     <div className="h-screen w-screen flex bg-gray-100">
       <ArticleNavBar />
-      <div className="w-full">{children}</div>
+      <div className="w-full flex-5">{children}</div>
     </div>
   )
 }
