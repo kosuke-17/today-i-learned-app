@@ -1,9 +1,10 @@
 import Link from 'next/link'
 
-import { fetchArticles } from '@/app/lib/articles/fetchs'
+import { ArticleSelectForNav } from '@/app/lib/articles/definitions'
+import { fetchArticlesForNav } from '@/app/lib/articles/fetchs'
 
 const ArticleNavBar = async () => {
-  const articles = await fetchArticles()
+  const articles: ArticleSelectForNav[] = await fetchArticlesForNav()
   return (
     <nav className="h-full flex-1">
       <p className="bg-slate-300 rounded-md m-2 py-8 px-4 flex justify-center">

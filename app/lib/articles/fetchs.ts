@@ -1,10 +1,15 @@
-import { ArticleSelect, selectArticle } from '@/app/lib/articles/definitions'
+import {
+  ArticleSelect,
+  ArticleSelectForNav,
+  selectArticle,
+  selectArticleForNav,
+} from '@/app/lib/articles/definitions'
 import { prisma } from '@/lib/prisma'
 
-export const fetchArticles = async (): Promise<ArticleSelect[]> => {
+export const fetchArticlesForNav = async (): Promise<ArticleSelectForNav[]> => {
   try {
     const articles = await prisma.article.findMany({
-      select: selectArticle,
+      select: selectArticleForNav,
     })
 
     return articles

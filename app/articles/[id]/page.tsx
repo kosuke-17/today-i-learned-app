@@ -1,15 +1,21 @@
 import { notFound } from 'next/navigation'
 
-const ArticlePage = () => {
-  const article = {}
+import { fetchArticleById } from '@/app/lib/articles/fetchs'
 
-  if (article) {
+type Props = {
+  params: { id: string }
+}
+
+const ArticlePage = async ({ params }: Props) => {
+  const article = await fetchArticleById(params.id)
+
+  if (!article) {
     notFound()
   }
 
   return (
     <>
-      <div>article</div>
+      <div>{article.title}</div>
     </>
   )
 }

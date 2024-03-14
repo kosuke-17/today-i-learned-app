@@ -1,13 +1,19 @@
 import { Article, Prisma, User } from '@prisma/client'
 
-export type ArticleSelect = Omit<Article, 'content'> & {
-  author: Pick<User, 'name'> | null
+export type ArticleSelectForNav = Pick<Article, 'id' | 'title'>
+export const selectArticleForNav = Prisma.validator<Prisma.ArticleSelect>()({
+  id: true,
+  title: true,
+})
+
+export type ArticleSelect = Omit<Article, 'authorId'> & {
+  author: { name: User['name'] } | null
 }
 export const selectArticle = Prisma.validator<Prisma.ArticleSelect>()({
   id: true,
   createdAt: true,
   title: true,
-  authorId: true,
+  content: true,
   published: true,
   author: {
     select: {

@@ -1,9 +1,11 @@
-import ArticleList from '@/app/features/article/ArticleList'
+import { redirect } from 'next/navigation'
 
-export default async function Page() {
-  return (
-    <main className="flex flex-col items-center justify-between p-24">
-      <ArticleList />
-    </main>
-  )
+import { fetchArticlesForNav } from '@/app/lib/articles/fetchs'
+
+const Page = async () => {
+  const articles = await fetchArticlesForNav()
+
+  redirect(`/articles/${articles[0].id}`)
 }
+
+export default Page
