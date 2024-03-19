@@ -4,8 +4,6 @@ services:
   postgres:
     container_name: 'til-db'
     image: postgres:14.0
-    networks:
-      - app_network
     environment:
       POSTGRES_USER: til-app
       POSTGRES_PASSWORD: til-app
@@ -21,8 +19,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    networks:
-      - app_network
     restart: always
     command: yarn dev
     environment:
@@ -35,7 +31,3 @@ services:
     ports:
       - '3000:3000'
     tty: true
-
-networks:
-  app_network:
-    driver: bridge
