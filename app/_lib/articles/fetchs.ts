@@ -6,6 +6,7 @@ import {
 } from '@/app/_lib/articles/definitions'
 import { prisma } from '@/lib/prisma'
 
+// TODO: unstable_cache試したい
 export const fetchArticlesForNav = async (): Promise<ArticleSelectForNav[]> => {
   try {
     const articles = await prisma.article.findMany({
