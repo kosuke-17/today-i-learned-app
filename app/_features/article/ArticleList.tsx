@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
-import { ArticleSelect } from '@/app/lib/articles/definitions'
-import { fetchArticles } from '@/app/lib/articles/fetchs'
+import { ArticleSelect } from '@/app/_lib/articles/definitions'
+import { fetchArticles } from '@/app/_lib/articles/fetchs'
 import { formatYYYYMMDD } from '@/lib/date'
 
 export default async function ArticleList() {

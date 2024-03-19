@@ -3,7 +3,7 @@ import {
   ArticleSelectForNav,
   selectArticle,
   selectArticleForNav,
-} from '@/app/lib/articles/definitions'
+} from '@/app/_lib/articles/definitions'
 import { prisma } from '@/lib/prisma'
 
 export const fetchArticlesForNav = async (): Promise<ArticleSelectForNav[]> => {
