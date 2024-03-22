@@ -1,6 +1,6 @@
-import { prisma } from '@/lib/prisma'
-import { ArticleCreate, ArticleUpdate } from './definitions'
 import { z } from 'zod'
+
+import { prisma } from '@/lib/prisma'
 
 const FormSchema = z.object({
   title: z.string({
@@ -21,22 +21,40 @@ type State = {
   message?: string | null
 }
 
-export const createArticle = async (_: State, formData: FormData) => {
+const validateFields = (formData: FormData, message: string) => {
   const validatedFields = FormSchema.safeParse({
     title: formData.get('title'),
     content: formData.get('content'),
     published: formData.get('published'),
     authorId: formData.get('authorId'),
   })
-
   if (!validatedFields.success) {
     return {
+      isError: true,
       errors: validatedFields.error.flatten().fieldErrors,
-      message: 'Missing Fields. Failed to Create Article.',
+      message,
     }
   }
 
-  const data: ArticleCreate = validatedFields.data
+  return {
+    isError: false,
+    data: validatedFields.data,
+  }
+}
+
+export const createArticle = async (_: State, formData: FormData) => {
+  const message = 'Missing Fields. Failed to Create Article.'
+  const validatedFields = validateFields(formData, message)
+
+  if (validatedFields.isError) {
+    return {
+      errors: validatedFields.errors,
+      message: validatedFields.message,
+    }
+  }
+
+  const data = validatedFields.data
+  if (!data) return { message: 'Data is nothing on createArticle' }
 
   try {
     await prisma.article.create({ data })
@@ -50,23 +68,20 @@ export const createArticle = async (_: State, formData: FormData) => {
 export const updateArticle = async (
   id: string,
   _: State,
-  formData: FormData
+  formData: FormData,
 ) => {
-  const validatedFields = FormSchema.safeParse({
-    title: formData.get('title'),
-    content: formData.get('content'),
-    published: formData.get('published'),
-    authorId: formData.get('authorId'),
-  })
+  const message = 'Missing Fields. Failed to Update Article.'
+  const validatedFields = validateFields(formData, message)
 
-  if (!validatedFields.success) {
+  if (validatedFields.isError) {
     return {
-      errors: validatedFields.error.flatten().fieldErrors,
-      message: 'Missing Fields. Failed to Update Article.',
+      errors: validatedFields.errors,
+      message: validatedFields.message,
     }
   }
 
-  const data: ArticleUpdate = validatedFields.data
+  const data = validatedFields.data
+  if (!data) return { message: 'Data is nothing on updateArticle' }
 
   try {
     await prisma.article.update({ where: { id }, data })

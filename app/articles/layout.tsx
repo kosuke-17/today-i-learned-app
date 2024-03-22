@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import ArticleNavBar from '@/app/features/article/ArticleNavBar'
+import ArticleNavBar from '@/app/_features/article/ArticleNavBar'
 
 export const metadata: Metadata = {
   title: '記事一覧',
