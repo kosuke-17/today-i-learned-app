@@ -43,6 +43,7 @@ const validateFields = (formData: FormData, message: string) => {
 }
 
 export const createArticle = async (_: State, formData: FormData) => {
+  // TODO: NextAuthを用いて、getServerSessionを実装
   const message = 'Missing Fields. Failed to Create Article.'
   const validatedFields = validateFields(formData, message)
 
@@ -70,6 +71,7 @@ export const updateArticle = async (
   _: State,
   formData: FormData,
 ) => {
+  // TODO: NextAuthを用いて、getServerSessionを実装
   const message = 'Missing Fields. Failed to Update Article.'
   const validatedFields = validateFields(formData, message)
 
@@ -92,6 +94,7 @@ export const updateArticle = async (
 }
 
 export const deleteArticle = async (id: string) => {
+  // TODO: NextAuthを用いて、getServerSessionを実装
   try {
     await prisma.article.delete({ where: { id } })
     return { message: 'Deleted Article.' }
