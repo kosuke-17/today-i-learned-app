@@ -1,5 +1,11 @@
+import { Metadata } from 'next'
+
+import CreateForm from '@/app/_features/article/CreateForm'
+
+export const metadata: Metadata = {
+  title: '記事作成',
+}
+
 export default async function Page() {
-  const createArticle = () => {}
-  // formとerrorメッセージの表示は共通化してActionFormコンポーネント作る
-  return <form action={createArticle}>{/* errorメッセージ表示 */}</form>
+  return <CreateForm />
 }

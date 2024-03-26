@@ -15,9 +15,11 @@ export default function Layout({
   return (
     <>
       <SideNav />
-      <div className="ml-20 h-screen w-screen border-l-white border-l-[1px] flex">
+      <div className="ml-20 h-screen w-screen border-l-white border-l-[1px] flex bg-gray-100">
         <ArticleSideNav />
-        <div className="w-full flex-5">{children}</div>
+        <div className="h-full flex-5 flex items-center justify-center">
+          {children}
+        </div>
       </div>
     </>
   )

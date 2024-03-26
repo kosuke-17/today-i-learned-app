@@ -1,5 +1,6 @@
 'use server'
 
+import { redirect } from 'next/navigation'
 import { z } from 'zod'
 
 import { prisma } from '@/lib/prisma'
@@ -9,7 +10,7 @@ const FormSchema = z.object({
     invalid_type_error: 'タイトルを入力してください',
   }),
   content: z.string().nullable(),
-  published: z.boolean(),
+  published: z.string().nullable(), // TODO : Booleanにしたい
   authorId: z.string().nullable(),
 })
 
@@ -63,9 +64,12 @@ export const createArticle = async (
   if (!data) return { message: 'Data is nothing on createArticle' }
 
   try {
-    await prisma.article.create({ data })
+    await prisma.article.create({
+      // TODO: 修正必要.onはcheckboxがチェックついていれば渡ってくる、チェックついていなければnull
+      data: { ...data, published: data.published === 'on' },
+    })
 
-    return { message: 'Created Article.' }
+    redirect('/articles')
   } catch (error) {
     return { message: 'Database Error: Failed to Create Article.' }
   }
@@ -91,8 +95,11 @@ export const updateArticle = async (
   if (!data) return { message: 'Data is nothing on updateArticle' }
 
   try {
-    await prisma.article.update({ where: { id }, data })
-    return { message: 'Updated Article' }
+    await prisma.article.update({
+      where: { id },
+      data: { ...data, published: data.published === 'on' },
+    })
+    redirect('/articles')
   } catch (error) {
     return { message: 'Database Error: Failed to Update Article.' }
   }
@@ -102,7 +109,7 @@ export const deleteArticle = async (id: string) => {
   // TODO: NextAuthを用いて、getServerSessionを実装
   try {
     await prisma.article.delete({ where: { id } })
-    return { message: 'Deleted Article.' }
+    redirect('/articles')
   } catch (error) {
     return { message: 'Database Error: Failed to Delete Article.' }
   }
