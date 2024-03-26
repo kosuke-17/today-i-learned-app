@@ -27,6 +27,7 @@ export default function NavLink({ nav }: Props) {
         ? DocumentDuplicateIcon
         : null
 
+  // TODO: popoverをつける
   return (
     <Link href={nav.href} className={linkClassName}>
       <span className="flex-1 text-center">{Icon ? <Icon /> : nav.name}</span>
