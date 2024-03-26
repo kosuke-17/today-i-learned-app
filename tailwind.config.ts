@@ -9,6 +9,21 @@ const config: Config = {
         '5': '5 5 0%',
         '8': '8 8 0%',
       },
+      animation: {
+        'fade-in-left': 'fade-in-left 0.6s ease-out both',
+      },
+      keyframes: {
+        'fade-in-left': {
+          from: {
+            transform: 'translateX(-10px)',
+            opacity: '0',
+          },
+          to: {
+            transform: 'translateX(0)',
+            opacity: '1',
+          },
+        },
+      },
     },
   },
   plugins: [],

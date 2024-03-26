@@ -7,7 +7,7 @@ import { fetchArticlesForNav } from '@/lib/articles/fetchs'
 export default async function ArticleNavBar() {
   const articles: ArticleSelectForNav[] = await fetchArticlesForNav()
   return (
-    <div className="my-2 mx-1 rounded-md w-48 bg-emerald-600 text-center pt-4">
+    <div className="animate-fade-in-left my-2 mx-1 rounded-md w-48 bg-emerald-600 text-center pt-4">
       <div>
         <Link
           href="/articles/create"

@@ -1,8 +1,5 @@
 import type { Metadata } from 'next'
 
-import ArticleSideNav from '@/app/_features/article/SideNav'
-import SideNav from '@/app/_features/common/MainSideNav'
-
 export const metadata: Metadata = {
   title: '記事一覧',
 }
