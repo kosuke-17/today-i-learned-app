@@ -6,12 +6,17 @@ import { z } from 'zod'
 
 import { prisma } from '@/lib/prisma'
 
+const CHECKED_CHECKBOX = 'on'
+
 const FormSchema = z.object({
   title: z.string({
     invalid_type_error: 'タイトルを入力してください',
   }),
   content: z.string().nullable(),
-  published: z.string().nullable(), // TODO : Booleanにしたい
+  published: z
+    .string()
+    .nullable()
+    .transform((v) => v === CHECKED_CHECKBOX),
   authorId: z.string().nullable(),
 })
 
@@ -65,10 +70,7 @@ export const createArticle = async (
   if (!data) return { message: 'Data is nothing on createArticle' }
 
   try {
-    await prisma.article.create({
-      // TODO: 修正必要.onはcheckboxがチェックついていれば渡ってくる、チェックついていなければnull
-      data: { ...data, published: data.published === 'on' },
-    })
+    await prisma.article.create({ data })
 
     revalidatePath('/articles')
   } catch (error) {
@@ -98,10 +100,7 @@ export const updateArticle = async (
   if (!data) return { message: 'Data is nothing on updateArticle' }
 
   try {
-    await prisma.article.update({
-      where: { id },
-      data: { ...data, published: data.published === 'on' },
-    })
+    await prisma.article.update({ where: { id }, data })
 
     revalidatePath('/articles')
   } catch (error) {
