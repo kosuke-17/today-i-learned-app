@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useMemo } from 'react'
+import { Tooltip } from 'react-tooltip'
 
 import type { Nav } from '@/app/_features/common/MainSideNav'
 import { getIcon } from '@/lib/icon'
@@ -22,10 +23,17 @@ export default function NavLink({ nav }: Props) {
 
   const Icon = getIcon(nav.iconType)
 
-  // TODO: popoverをつける
   return (
-    <Link href={nav.href} className={linkClassName}>
-      <span className="flex-1 text-center">{Icon ? <Icon /> : nav.name}</span>
-    </Link>
+    <>
+      <div data-tooltip-id={nav.name} data-tooltip-content={nav.name}>
+        <Link id={nav.name} href={nav.href} className={linkClassName}>
+          <span className="flex-1 text-center">
+            {Icon ? <Icon /> : nav.name}
+          </span>
+        </Link>
+
+        <Tooltip className="z-10" id={nav.name} place="right" />
+      </div>
+    </>
   )
 }
