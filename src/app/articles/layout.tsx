@@ -17,9 +17,7 @@ export default function Layout({
       <SideNav />
       <div className="ml-20 h-screen w-screen border-l-white border-l-[1px] flex bg-gray-100">
         <ArticleSideNav />
-        <div className="h-full flex-8 flex items-center justify-center">
-          {children}
-        </div>
+        <div className="flex-8">{children}</div>
       </div>
     </>
   )
