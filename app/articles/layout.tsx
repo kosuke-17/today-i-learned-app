@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import ArticleNavBar from '@/app/_features/article/ArticleNavBar'
+import ArticleSideNav from '@/app/_features/article/SideNav'
 import SideNav from '@/app/_features/common/MainSideNav'
 
 export const metadata: Metadata = {
@@ -15,8 +15,8 @@ export default function Layout({
   return (
     <>
       <SideNav />
-      <div className="h-screen w-screen flex bg-gray-100">
-        <ArticleNavBar />
+      <div className="ml-20 h-screen w-screen border-l-white border-l-[1px] flex">
+        <ArticleSideNav />
         <div className="w-full flex-5">{children}</div>
       </div>
     </>
