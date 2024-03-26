@@ -12,7 +12,7 @@ export default function Layout({
   children: React.ReactNode
 }>) {
   return (
-    <div className="h-screen w-screen flex bg-gray-200">
+    <div className="h-screen w-screen flex">
       <MainSideNav />
       <div className="flex-5 my-2 mx-1">{children}</div>
     </div>
