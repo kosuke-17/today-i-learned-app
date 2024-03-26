@@ -16,13 +16,13 @@ export default function NavLink({ nav }: Props) {
 
   const linkClassName = useMemo(() => {
     const linkColor = isCurrentPath ? 'bg-emerald-600' : 'hover:bg-emerald-600'
-    return `flex items-center p-2 rounded-lg text-white group ${linkColor}`
+    return `flex items-center mx-1 p-1 rounded-full text-white group ${linkColor}`
   }, [isCurrentPath])
 
   return (
     <Link href={nav.href} className={linkClassName}>
       {/* TODO: ADD icon (SVG? */}
-      <span className="ms-3">{nav.name}</span>
+      <span className="flex-1 text-center">{nav.name}</span>
     </Link>
   )
 }

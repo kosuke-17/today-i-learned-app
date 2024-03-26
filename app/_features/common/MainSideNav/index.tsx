@@ -24,7 +24,7 @@ export default function MainSideNav() {
       aria-label="MainSideNav"
     >
       <div className="h-full py-4 overflow-y-auto bg-emerald-500">
-        <ul className="space-y-2">
+        <ul className="space-y-1">
           {navs.map((nav) => (
             <li key={nav.name}>
               <NavLink nav={nav} />
