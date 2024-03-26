@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 
-import { fetchArticleById } from '@/app/_lib/articles/fetchs'
+import { fetchArticleById } from '@/lib/articles/fetchs'
 
 type Props = {
   params: { id: string }

@@ -1,3 +1,5 @@
+'use server'
+
 import { z } from 'zod'
 
 import { prisma } from '@/lib/prisma'
@@ -11,12 +13,12 @@ const FormSchema = z.object({
   authorId: z.string().nullable(),
 })
 
-type State = {
-  fieldErrors: {
-    title?: string[] | undefined
-    content?: string[] | undefined
-    published?: string[] | undefined
-    authorId?: string[] | undefined
+export type FormState = {
+  errors?: {
+    title?: string[]
+    content?: string[]
+    published?: string[]
+    authorId?: string[]
   }
   message?: string | null
 }
@@ -42,7 +44,10 @@ const validateFields = (formData: FormData, message: string) => {
   }
 }
 
-export const createArticle = async (_: State, formData: FormData) => {
+export const createArticle = async (
+  _: FormState,
+  formData: FormData,
+): Promise<FormState> => {
   // TODO: NextAuthを用いて、getServerSessionを実装
   const message = 'Missing Fields. Failed to Create Article.'
   const validatedFields = validateFields(formData, message)
@@ -68,7 +73,7 @@ export const createArticle = async (_: State, formData: FormData) => {
 
 export const updateArticle = async (
   id: string,
-  _: State,
+  _: FormState,
   formData: FormData,
 ) => {
   // TODO: NextAuthを用いて、getServerSessionを実装

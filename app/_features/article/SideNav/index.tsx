@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
-import { ArticleSelectForNav } from '@/app/_lib/articles/definitions'
-import { fetchArticlesForNav } from '@/app/_lib/articles/fetchs'
+import { ArticleSelectForNav } from '@/lib/articles/definitions'
+import { fetchArticlesForNav } from '@/lib/articles/fetchs'
 
 export default async function ArticleNavBar() {
   const articles: ArticleSelectForNav[] = await fetchArticlesForNav()

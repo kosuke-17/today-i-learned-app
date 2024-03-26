@@ -3,7 +3,7 @@ import {
   ArticleSelectForNav,
   selectArticle,
   selectArticleForNav,
-} from '@/app/_lib/articles/definitions'
+} from '@/lib/articles/definitions'
 import { prisma } from '@/lib/prisma'
 
 // TODO: unstable_cache試したい
