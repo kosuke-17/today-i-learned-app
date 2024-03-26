@@ -17,7 +17,7 @@ export default function Layout({
       <div className="h-screen w-screen flex bg-gray-200">
         <MainSideNav />
         <ArticleSideNav />
-        <div className="flex-8">{children}</div>
+        <div className="flex-8 my-2 mx-1">{children}</div>
       </div>
     </>
   )

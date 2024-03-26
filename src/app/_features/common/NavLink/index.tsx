@@ -1,5 +1,6 @@
 'use client'
 
+import { HomeIcon, DocumentDuplicateIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useMemo } from 'react'
@@ -16,13 +17,19 @@ export default function NavLink({ nav }: Props) {
 
   const linkClassName = useMemo(() => {
     const linkColor = isCurrentPath ? 'bg-emerald-600' : 'hover:bg-emerald-600'
-    return `flex items-center mx-1 p-1 rounded-full text-white group ${linkColor}`
+    return `flex items-center mx-1 p-1 rounded-lg text-white group ${linkColor}`
   }, [isCurrentPath])
+
+  const Icon =
+    nav.iconType === 'home'
+      ? HomeIcon
+      : nav.iconType === 'articles'
+        ? DocumentDuplicateIcon
+        : null
 
   return (
     <Link href={nav.href} className={linkClassName}>
-      {/* TODO: ADD icon (SVG? */}
-      <span className="flex-1 text-center">{nav.name}</span>
+      <span className="flex-1 text-center">{Icon ? <Icon /> : nav.name}</span>
     </Link>
   )
 }
