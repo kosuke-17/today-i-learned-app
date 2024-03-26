@@ -1,5 +1,6 @@
 'use server'
 
+import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { z } from 'zod'
 
@@ -69,10 +70,12 @@ export const createArticle = async (
       data: { ...data, published: data.published === 'on' },
     })
 
-    redirect('/articles')
+    revalidatePath('/articles')
   } catch (error) {
     return { message: 'Database Error: Failed to Create Article.' }
   }
+
+  redirect('/articles')
 }
 
 export const updateArticle = async (
@@ -99,18 +102,24 @@ export const updateArticle = async (
       where: { id },
       data: { ...data, published: data.published === 'on' },
     })
-    redirect('/articles')
+
+    revalidatePath('/articles')
   } catch (error) {
     return { message: 'Database Error: Failed to Update Article.' }
   }
+
+  redirect('/articles')
 }
 
 export const deleteArticle = async (id: string) => {
   // TODO: NextAuthを用いて、getServerSessionを実装
   try {
     await prisma.article.delete({ where: { id } })
-    redirect('/articles')
+
+    revalidatePath('/articles')
   } catch (error) {
     return { message: 'Database Error: Failed to Delete Article.' }
   }
+
+  redirect('/articles')
 }
