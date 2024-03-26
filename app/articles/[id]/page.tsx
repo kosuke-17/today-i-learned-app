@@ -6,7 +6,7 @@ type Props = {
   params: { id: string }
 }
 
-const ArticlePage = async ({ params }: Props) => {
+export default async function ArticlePage({ params }: Props) {
   const article = await fetchArticleById(params.id)
 
   if (!article) {
@@ -19,5 +19,3 @@ const ArticlePage = async ({ params }: Props) => {
     </>
   )
 }
-
-export default ArticlePage

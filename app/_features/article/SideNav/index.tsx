@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { ArticleSelectForNav } from '@/app/_lib/articles/definitions'
 import { fetchArticlesForNav } from '@/app/_lib/articles/fetchs'
 
-const ArticleNavBar = async () => {
+export default async function ArticleNavBar() {
   const articles: ArticleSelectForNav[] = await fetchArticlesForNav()
   return (
     <nav className="h-full flex-1 bg-emerald-600">
@@ -15,5 +15,3 @@ const ArticleNavBar = async () => {
     </nav>
   )
 }
-
-export default ArticleNavBar

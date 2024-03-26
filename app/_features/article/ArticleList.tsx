@@ -2,7 +2,6 @@ import Link from 'next/link'
 
 import { ArticleSelectForNav } from '@/app/_lib/articles/definitions'
 import { fetchArticlesForNav } from '@/app/_lib/articles/fetchs'
-import { formatYYYYMMDD } from '@/lib/date'
 
 export default async function ArticleList() {
   const articles = await fetchArticlesForNav()
@@ -21,7 +20,7 @@ export default async function ArticleList() {
   )
 }
 
-const ArticleCard = ({ article }: { article: ArticleSelectForNav }) => {
+function ArticleCard({ article }: { article: ArticleSelectForNav }) {
   return (
     <div className="max-w-xs rounded overflow-hidden shadow-lg">
       {/* TODO: 絵文字入れたい */}
