@@ -1,4 +1,6 @@
 import NavLink from '@/app/_features/common/NavLink'
+import { ICON } from '@/constant/icon'
+import { PATH } from '@/constant/path'
 import { NavIconType } from '@/lib/icon'
 
 export type Nav = {
@@ -10,23 +12,23 @@ export type Nav = {
 const navs: Nav[] = [
   {
     name: 'ホーム',
-    href: '/home',
-    iconType: 'home',
+    href: PATH.HOME,
+    iconType: ICON.HOME,
   },
   {
     name: '記事',
-    href: '/articles',
-    iconType: 'articles',
+    href: PATH.ARTICLES,
+    iconType: ICON.ARTICLES,
   },
   {
     name: 'ユーザー',
-    href: '/users',
-    iconType: 'users',
+    href: PATH.USERS,
+    iconType: ICON.USERS,
   },
   {
     name: '個人設定',
-    href: '/personal-settings',
-    iconType: 'personal-settings',
+    href: PATH.PERSONAL_SETTINGS,
+    iconType: ICON.PERSONAL_SETTINGS,
   },
 ]
 

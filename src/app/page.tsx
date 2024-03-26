@@ -1,5 +1,7 @@
 import { redirect } from 'next/navigation'
 
-export default async function Home() {
-  redirect('/home')
+import { PATH } from '@/constant/path'
+
+export default async function Page() {
+  redirect(PATH.HOME)
 }

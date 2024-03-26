@@ -4,6 +4,7 @@ import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { z } from 'zod'
 
+import { PATH } from '@/constant/path'
 import { prisma } from '@/lib/prisma'
 
 const CHECKED_CHECKBOX = 'on'
@@ -72,12 +73,12 @@ export const createArticle = async (
   try {
     await prisma.article.create({ data })
 
-    revalidatePath('/articles')
+    revalidatePath(PATH.ARTICLES)
   } catch (error) {
     return { message: 'Database Error: Failed to Create Article.' }
   }
 
-  redirect('/articles')
+  redirect(PATH.ARTICLES)
 }
 
 export const updateArticle = async (
@@ -102,12 +103,12 @@ export const updateArticle = async (
   try {
     await prisma.article.update({ where: { id }, data })
 
-    revalidatePath('/articles')
+    revalidatePath(PATH.ARTICLES)
   } catch (error) {
     return { message: 'Database Error: Failed to Update Article.' }
   }
 
-  redirect('/articles')
+  redirect(PATH.ARTICLES)
 }
 
 export const deleteArticle = async (id: string) => {
@@ -115,10 +116,10 @@ export const deleteArticle = async (id: string) => {
   try {
     await prisma.article.delete({ where: { id } })
 
-    revalidatePath('/articles')
+    revalidatePath(PATH.ARTICLES)
   } catch (error) {
     return { message: 'Database Error: Failed to Delete Article.' }
   }
 
-  redirect('/articles')
+  redirect(PATH.ARTICLES)
 }
