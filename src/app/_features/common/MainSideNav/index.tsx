@@ -20,10 +20,10 @@ export default function MainSideNav() {
   return (
     <aside
       id="main-sidenav"
-      className="fixed top-0 left-0 w-20 h-screen pt-4 bg-emerald-500"
+      className="min-w-20 pt-4 bg-emerald-500 my-2 mx-1 rounded-md"
       aria-label="MainSideNav"
     >
-      <div className="h-full overflow-y-auto">
+      <div className="overflow-y-auto">
         <ul className="space-y-1">
           {navs.map((nav) => (
             <li key={nav.name}>

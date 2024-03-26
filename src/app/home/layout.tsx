@@ -12,11 +12,9 @@ export default function Layout({
   children: React.ReactNode
 }>) {
   return (
-    <>
+    <div className="h-screen w-screen flex bg-gray-200">
       <MainSideNav />
-      <div className="ml-20 h-screen w-screen bg-gray-100">
-        <div className="h-full flex-5">{children}</div>
-      </div>
-    </>
+      <div className="flex-5">{children}</div>
+    </div>
   )
 }
