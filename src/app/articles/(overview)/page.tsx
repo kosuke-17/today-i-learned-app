@@ -11,7 +11,7 @@ export default async function Page() {
   }
 
   return (
-    <div className="flex flex-1 mt-4 items-start juzstify-center">
+    <div className="flex gap-2 mt-4 items-start juzstify-center">
       {articles.map((article) => (
         <div key={article.id} className="bg-white rounded-md p-4">
           <Link href={`/articles/${article.id}`}>{article.title}</Link>

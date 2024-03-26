@@ -11,8 +11,8 @@ export default function Layout({
 }>) {
   return (
     <>
-      <div>Today I Learndで学んだ内容を投稿</div>
-      <div>{children}</div>
+      <p className="text-xl font-bold">Today I Learndで学んだ内容</p>
+      <div className="w-full">{children}</div>
     </>
   )
 }

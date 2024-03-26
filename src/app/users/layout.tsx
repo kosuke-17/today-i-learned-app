@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
 
-import ArticleSideNav from '@/app/_features/article/SideNav'
 import MainSideNav from '@/app/_features/common/MainSideNav'
 
 export const metadata: Metadata = {
-  title: '記事一覧',
+  title: 'ユーザー一覧',
 }
 
 export default function Layout({
@@ -15,7 +14,6 @@ export default function Layout({
   return (
     <div className="h-screen w-screen flex">
       <MainSideNav />
-      <ArticleSideNav />
       <div className="flex-8 my-2 mx-1">{children}</div>
     </div>
   )

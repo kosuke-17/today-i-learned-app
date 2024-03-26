@@ -1,6 +1,5 @@
 import NavLink from '@/app/_features/common/NavLink'
-
-export type NavIconType = 'home' | 'articles'
+import { NavIconType } from '@/lib/icon'
 
 export type Nav = {
   name: string
@@ -18,6 +17,16 @@ const navs: Nav[] = [
     name: '記事',
     href: '/articles',
     iconType: 'articles',
+  },
+  {
+    name: 'ユーザー',
+    href: '/users',
+    iconType: 'users',
+  },
+  {
+    name: '個人設定',
+    href: '/personal-settings',
+    iconType: 'personal-settings',
   },
 ]
 
