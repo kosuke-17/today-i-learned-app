@@ -9,14 +9,14 @@ export default function NotFound() {
       <p>記事の一覧データが見つかりませんでした.</p>
       <Link
         href={PATH.ARTICLES}
-        className="mt-4 rounded-md bg-emerald-500 px-4 py-2 text-sm text-white transition-colors hover:bg-emerald-600"
+        className="mt-4 rounded-md bg-emerald-600 px-4 py-2 text-sm text-white transition-colors hover:bg-emerald-700"
       >
         戻る
       </Link>
 
       <Link
         href={PATH.ARTICLES_CREATE}
-        className="mt-4 rounded-md bg-emerald-500 px-4 py-2 text-sm text-white transition-colors hover:bg-emerald-600"
+        className="mt-4 rounded-md bg-emerald-600 px-4 py-2 text-sm text-white transition-colors hover:bg-emerald-700"
       >
         記事を作成
       </Link>
