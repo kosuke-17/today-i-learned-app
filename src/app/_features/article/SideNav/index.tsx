@@ -2,6 +2,7 @@ import { PlusIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 
 import _NavLink from '@/app/_features/article/_NavLink'
+import Divider from '@/app/_features/common/Divider'
 import { PATH } from '@/constant/path'
 import type { ArticleSelectForNav } from '@/lib/articles/definitions'
 import { fetchArticlesForNav } from '@/lib/articles/fetchs'
@@ -14,7 +15,7 @@ export default async function ArticleNavBar() {
         <PlusIcon className="h-8 w-16 px-4 text-white hover:bg-primary-dark rounded-lg" />
       </Link>
 
-      <div className="border-[0.5px] border-gray-100 my-2 mx-8" />
+      <Divider />
 
       <ul>
         {articles.map((article) => (
