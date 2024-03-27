@@ -29,6 +29,7 @@ export type FormState = {
     authorId?: string[]
   }
   message?: string | null
+  status: 400 | 404 | 500 | null
 }
 
 const validateFields = (formData: FormData, message: string) => {
@@ -43,6 +44,7 @@ const validateFields = (formData: FormData, message: string) => {
       isError: true,
       errors: validatedFields.error.flatten().fieldErrors,
       message,
+      status: 400,
     }
   }
 
@@ -64,18 +66,19 @@ export const createArticle = async (
     return {
       errors: validatedFields.errors,
       message: validatedFields.message,
+      status: 400,
     }
   }
 
   const data = validatedFields.data
-  if (!data) return { message: 'Data is nothing on createArticle' }
+  if (!data) return { message: 'Data is nothing on createArticle', status: 404 }
 
   try {
     await prisma.article.create({ data })
 
     revalidatePath(PATH.ARTICLES)
   } catch (error) {
-    return { message: 'Database Error: Failed to Create Article.' }
+    return { message: 'Database Error: Failed to Create Article.', status: 500 }
   }
 
   redirect(PATH.ARTICLES)
@@ -94,18 +97,19 @@ export const updateArticle = async (
     return {
       errors: validatedFields.errors,
       message: validatedFields.message,
+      status: 400,
     }
   }
 
   const data = validatedFields.data
-  if (!data) return { message: 'Data is nothing on updateArticle' }
+  if (!data) return { message: 'Data is nothing on updateArticle', status: 404 }
 
   try {
     await prisma.article.update({ where: { id }, data })
 
     revalidatePath(PATH.ARTICLES)
   } catch (error) {
-    return { message: 'Database Error: Failed to Update Article.' }
+    return { message: 'Database Error: Failed to Update Article.', status: 500 }
   }
 
   redirect(PATH.ARTICLES)
@@ -118,7 +122,7 @@ export const deleteArticle = async (id: string) => {
 
     revalidatePath(PATH.ARTICLES)
   } catch (error) {
-    return { message: 'Database Error: Failed to Delete Article.' }
+    return { message: 'Database Error: Failed to Delete Article.', status: 500 }
   }
 
   redirect(PATH.ARTICLES)
