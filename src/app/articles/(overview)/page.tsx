@@ -7,7 +7,7 @@ import { fetchArticlesForNav } from '@/lib/articles/fetchs'
 export default async function Page() {
   const articles = await fetchArticlesForNav()
 
-  if (!articles.length) {
+  if (articles.length) {
     notFound()
   }
 

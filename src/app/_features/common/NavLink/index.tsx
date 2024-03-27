@@ -17,7 +17,7 @@ export default function NavLink({ nav }: Props) {
   const isCurrentPath = pathName === nav.href
 
   const linkClassName = useMemo(() => {
-    const linkColor = isCurrentPath ? 'bg-emerald-600' : 'hover:bg-emerald-600'
+    const linkColor = isCurrentPath ? 'bg-emerald-700' : 'hover:bg-emerald-700'
     return `flex items-center mx-1 p-1 rounded-lg text-white group ${linkColor}`
   }, [isCurrentPath])
 

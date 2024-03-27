@@ -14,7 +14,7 @@ export default function _NavLink({ name, href }: Props) {
   const isCurrentPath = pathName === href
 
   const linkClassName = useMemo(() => {
-    return `mx-8 rounded-md ${isCurrentPath ? 'bg-emerald-700' : 'hover:bg-emerald-700'}`
+    return `mx-8 rounded-md ${isCurrentPath ? 'bg-emerald-600' : 'hover:bg-emerald-600'}`
   }, [isCurrentPath])
 
   return (
