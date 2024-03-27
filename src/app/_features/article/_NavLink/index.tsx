@@ -16,7 +16,7 @@ export default function _NavLink({ name, href }: Props) {
   return (
     <li
       className={clsx(
-        'rounded-md text-white w-full',
+        'rounded-md text-white w-full my-0.5',
         isCurrentPath ? 'bg-emerald-700' : 'hover:bg-emerald-700',
       )}
     >

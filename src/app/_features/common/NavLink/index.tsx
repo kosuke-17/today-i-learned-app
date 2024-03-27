@@ -3,7 +3,6 @@
 import clsx from 'clsx'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useMemo } from 'react'
 import { Tooltip } from 'react-tooltip'
 
 import type { Nav } from '@/app/_features/common/MainSideNav'
@@ -15,7 +14,7 @@ type Props = {
 
 export default function NavLink({ nav }: Props) {
   const pathName = usePathname()
-  const isCurrentPath = pathName === nav.href
+  const isCurrentPath = pathName.includes(nav.href)
 
   const Icon = getIcon(nav.iconType)
 
