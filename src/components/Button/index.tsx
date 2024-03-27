@@ -1,14 +1,16 @@
+import clsx from 'clsx'
 import { ComponentPropsWithoutRef } from 'react'
 
 type Props = ComponentPropsWithoutRef<'button'>
 
-export default function Button({ children, ...props }: Props) {
+export default function Button(props: Props) {
   return (
     <button
       {...props}
-      className="bg-emerald-500 rounded-md px-4 py-2 text-white"
-    >
-      {children}
-    </button>
+      className={clsx(
+        'bg-emerald-500 hover:bg-emerald-600 rounded-md px-4 py-2 text-white',
+        props.className,
+      )}
+    />
   )
 }

@@ -1,5 +1,6 @@
 'use client'
 
+import { PaperAirplaneIcon } from '@heroicons/react/24/outline'
 import { useFormStatus } from 'react-dom'
 import toast, { type Toast, Toaster } from 'react-hot-toast'
 
@@ -17,7 +18,7 @@ export default function SubmitButton({ ht }: Props) {
   return (
     <>
       <Button disabled={status.pending} onClick={notify}>
-        送信
+        <PaperAirplaneIcon className="h-8 w-8 text-white" />
       </Button>
       <Toaster />
     </>
