@@ -1,10 +1,11 @@
 'use client'
 
-import { useFormState, useFormStatus } from 'react-dom'
+import { useFormState } from 'react-dom'
 
+import SubmitButton from '@/app/_features/common/SubmitButton/index'
 import { FormState, createArticle } from '@/lib/articles/actions'
 
-const initFormState: FormState = { errors: {}, message: null }
+const initFormState: FormState = { errors: {}, message: null, status: null }
 
 export default function CreateForm() {
   const [state, dispatch] = useFormState(createArticle, initFormState)
@@ -61,12 +62,7 @@ export default function CreateForm() {
             ))}
         </div>
       </div>
-      <SubmitButton />
+      <SubmitButton ht={{ message: '記事を作成しました' }} />
     </form>
   )
-}
-
-function SubmitButton() {
-  const status = useFormStatus()
-  return <button disabled={status.pending}>送信</button>
 }
