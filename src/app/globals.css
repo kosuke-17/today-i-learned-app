@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* デフォルトテーマ */
+:root {
+  --bg-primary: #059669;
+  --bg-primary-dark: #047857;
+}

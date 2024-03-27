@@ -36,7 +36,7 @@ export default function MainSideNav() {
   return (
     <aside
       id="main-sidenav"
-      className=" min-w-14 pt-4 bg-emerald-600 my-2 mx-1 rounded-md"
+      className="min-w-14 pt-4 bg-primary my-2 mx-1 rounded-md"
       aria-label="MainSideNav"
     >
       <div className="overflow-y-auto">

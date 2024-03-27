@@ -14,7 +14,7 @@ export default function NotFoundContent({ title, linkItems }: Props) {
         <Link
           key={item.name}
           href={item.href}
-          className="mt-4 rounded-md bg-emerald-600 px-4 py-2 text-sm text-white hover:bg-emerald-700"
+          className="mt-4 rounded-md px-4 py-2 text-sm text-white bg-primary hover:bg-primary-dark"
         >
           {item.name}
         </Link>

@@ -4,6 +4,10 @@ const config: Config = {
   content: ['./src/app/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
+      colors: {
+        primary: 'var(--bg-primary)',
+        'primary-dark': 'var(--bg-primary-dark)',
+      },
       flex: {
         '2': '2 2 0%',
         '5': '5 5 0%',

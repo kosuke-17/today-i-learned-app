@@ -1,5 +1,6 @@
 'use client'
 
+import clsx from 'clsx'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useMemo } from 'react'
@@ -16,17 +17,19 @@ export default function NavLink({ nav }: Props) {
   const pathName = usePathname()
   const isCurrentPath = pathName === nav.href
 
-  const linkClassName = useMemo(() => {
-    const linkColor = isCurrentPath ? 'bg-emerald-700' : 'hover:bg-emerald-700'
-    return `flex items-center mx-1 p-1 rounded-lg text-white group ${linkColor}`
-  }, [isCurrentPath])
-
   const Icon = getIcon(nav.iconType)
 
   return (
     <>
       <div data-tooltip-id={nav.name} data-tooltip-content={nav.name}>
-        <Link id={nav.name} href={nav.href} className={linkClassName}>
+        <Link
+          id={nav.name}
+          href={nav.href}
+          className={clsx(
+            'flex items-center mx-1 p-1 rounded-lg text-white group',
+            isCurrentPath ? 'bg-primary-dark' : 'hover:bg-primary-dark',
+          )}
+        >
           <span className="flex-1 text-center">
             {Icon ? <Icon /> : nav.name}
           </span>
