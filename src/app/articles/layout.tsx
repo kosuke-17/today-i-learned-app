@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 
 import ArticleSideNav from '@/app/_features/article/SideNav'
+import Content from '@/app/_features/common/Content'
+import Main from '@/app/_features/common/Main'
 import MainSideNav from '@/app/_features/common/MainSideNav'
 
 export const metadata: Metadata = {
@@ -13,10 +15,10 @@ export default function Layout({
   children: React.ReactNode
 }>) {
   return (
-    <div className="h-screen w-screen flex">
+    <Main>
       <MainSideNav />
       <ArticleSideNav />
-      <div className="flex-8 my-2 mx-1">{children}</div>
-    </div>
+      <Content>{children}</Content>
+    </Main>
   )
 }
