@@ -5,8 +5,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: 'var(--bg-primary)',
-        'primary-dark': 'var(--bg-primary-dark)',
+        'primary-main': 'var(--primary-main)',
+        'primary-dark': 'var(--primary-dark)',
       },
       flex: {
         '2': '2 2 0%',

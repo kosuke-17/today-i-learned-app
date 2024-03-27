@@ -4,6 +4,6 @@
 
 /* デフォルトテーマ */
 :root {
-  --bg-primary: #059669;
-  --bg-primary-dark: #047857;
+  --primary-main: #059669;
+  --primary-dark: #047857;
 }

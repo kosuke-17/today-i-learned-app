@@ -7,11 +7,11 @@ import { fetchArticlesForNav } from '@/lib/articles/fetchs'
 export default async function ArticleNavBar() {
   const articles: ArticleSelectForNav[] = await fetchArticlesForNav()
   return (
-    <div className="animate-fade-in-left my-2 mx-1 rounded-md w-48 bg-primary text-center pt-4">
+    <div className="animate-fade-in-left my-2 mx-1 rounded-md w-48 bg-primary-main text-center pt-4">
       <div>
         <Link
           href="/articles/create"
-          className="bg-white bg-opacity-80 text-primary hover:text-primary-dark rounded-md p-1"
+          className="bg-white bg-opacity-80 text-primary-main hover:text-primary-dark rounded-md p-1"
         >
           記事追加
         </Link>
