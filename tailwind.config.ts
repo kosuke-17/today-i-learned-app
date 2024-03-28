@@ -7,6 +7,9 @@ const config: Config = {
       colors: {
         'primary-main': 'var(--primary-main)',
         'primary-dark': 'var(--primary-dark)',
+        'secondary-main': 'var(--secondary-main)',
+        'secondary-light': 'var(--secondary-light)',
+        'secondary-dark': 'var(--secondary-dark)',
       },
       flex: {
         '2': '2 2 0%',

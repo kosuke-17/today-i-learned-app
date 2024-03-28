@@ -19,23 +19,19 @@ export default function NavLink({ nav }: Props) {
   const Icon = getIcon(nav.iconType)
 
   return (
-    <>
-      <div data-tooltip-id={nav.name} data-tooltip-content={nav.name}>
-        <Link
-          id={nav.name}
-          href={nav.href}
-          className={clsx(
-            'flex items-center mx-1 p-1 rounded-lg text-white group',
-            isCurrentPath ? 'bg-primary-dark' : 'hover:bg-primary-dark',
-          )}
-        >
-          <span className="flex-1 text-center">
-            {Icon ? <Icon /> : nav.name}
-          </span>
-        </Link>
+    <div data-tooltip-id={nav.name} data-tooltip-content={nav.name}>
+      <Link
+        id={nav.name}
+        href={nav.href}
+        className={clsx(
+          'flex items-center mx-1 p-1 rounded-lg text-white group',
+          isCurrentPath ? 'bg-primary-dark' : 'hover:bg-primary-dark',
+        )}
+      >
+        <span className="flex-1 text-center">{Icon ? <Icon /> : nav.name}</span>
+      </Link>
 
-        <Tooltip className="z-10" id={nav.name} place="right" />
-      </div>
-    </>
+      <Tooltip className="z-10" id={nav.name} place="right" />
+    </div>
   )
 }

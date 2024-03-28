@@ -10,9 +10,7 @@ import { prisma } from '@/lib/prisma'
 const CHECKED_CHECKBOX = 'on'
 
 const FormSchema = z.object({
-  title: z.string({
-    invalid_type_error: 'タイトルを入力してください',
-  }),
+  title: z.string().min(1, { message: '1文字以上入力してください' }),
   content: z.string().nullable(),
   published: z
     .string()

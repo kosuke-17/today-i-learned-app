@@ -4,6 +4,14 @@
 
 /* デフォルトテーマ */
 :root {
+  /* bg-emerald-600 */
   --primary-main: #059669;
+  /* bg-emerald-700 */
   --primary-dark: #047857;
+  /* bg-gray-500 */
+  --secondary-main: #6b7280;
+  /* bg-gray-200 */
+  --secondary-light: #e5e7eb;
+  /* bg-gray-700 */
+  --secondary-dark: #374151;
 }

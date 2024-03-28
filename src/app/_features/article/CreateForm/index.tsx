@@ -17,24 +17,41 @@ export default function CreateForm() {
       <div className="rounded-md bg-white p-4 md:p-6">
         <div>
           <input name="title" placeholder="タイトル" defaultValue="" />
+
+          <div id="title-error" aria-live="polite" aria-atomic="true">
+            {state.errors?.title &&
+              state.errors.title.map((error: string) => (
+                <p className="mt-2 text-sm text-red-500" key={error}>
+                  {error}
+                </p>
+              ))}
+          </div>
         </div>
 
         <div>
           <textarea name="content" placeholder="内容" defaultValue="" />
+
+          <div id="content-error" aria-live="polite" aria-atomic="true">
+            {state.errors?.content &&
+              state.errors.content.map((error: string) => (
+                <p className="mt-2 text-sm text-red-500" key={error}>
+                  {error}
+                </p>
+              ))}
+          </div>
         </div>
 
         <div className="flex items-center mb-4">
-          <input
-            name="published"
-            id="published"
-            type="checkbox"
-            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-          />
-          <label
-            htmlFor="published"
-            className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-          >
-            公開
+          <label className="inline-flex items-center cursor-pointer">
+            <input type="checkbox" className="sr-only peer" />
+            <div
+              className="relative w-11 h-6 bg-secondary-light rounded-full peer dark:bg-secondary-main
+                         peer-checked:after:translate-x-full after:border-gray-300
+                         rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white 
+                         after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white 
+                        after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-main"
+            />
+            <span className="ms-3 text-lg font-bold">公開</span>
           </label>
         </div>
 
@@ -44,24 +61,6 @@ export default function CreateForm() {
           name="authorId"
           value="clu829fxe0000fhevegqnmqzn"
         />
-
-        <div id="title-error" aria-live="polite" aria-atomic="true">
-          {state.errors?.title &&
-            state.errors.title.map((error: string) => (
-              <p className="mt-2 text-sm text-red-500" key={error}>
-                {error}
-              </p>
-            ))}
-        </div>
-
-        <div id="content-error" aria-live="polite" aria-atomic="true">
-          {state.errors?.content &&
-            state.errors.content.map((error: string) => (
-              <p className="mt-2 text-sm text-red-500" key={error}>
-                {error}
-              </p>
-            ))}
-        </div>
       </div>
       <SubmitButton ht={{ message: '記事を作成しました' }} />
     </form>
