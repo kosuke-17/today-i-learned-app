@@ -8,6 +8,11 @@ type Props = {
   children: ReactNode
 }
 
+/**
+ * 操作通知のためのProvider
+ *
+ * @see: https://fkhadra.github.io/react-toastify/api/toast-container
+ */
 export default function ToastProvider({ children }: Props) {
   return (
     <>
