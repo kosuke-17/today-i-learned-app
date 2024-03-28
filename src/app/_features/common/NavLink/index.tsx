@@ -24,7 +24,7 @@ export default function NavLink({ nav }: Props) {
         id={nav.name}
         href={nav.href}
         className={clsx(
-          'flex items-center mx-1 p-1 rounded-lg text-white group',
+          'flex items-center mx-2 p-1 rounded-lg text-white group',
           isCurrentPath ? 'bg-primary-dark' : 'hover:bg-primary-dark',
         )}
       >
