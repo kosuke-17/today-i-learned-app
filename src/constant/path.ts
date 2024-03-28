@@ -12,13 +12,19 @@ export const PATH = {
 
 type PathKey = keyof typeof PATH
 
-type GenerateViewPath = {
+type GetDynamicPath = {
   /** pathのキー */
   key: PathKey
   /** idなどのユニークな値 */
   id: string | number
 }
 
-export const generateViewPath = ({ key, id }: GenerateViewPath) => {
+type GetViewPath = GetDynamicPath
+
+export const getDynamicPath = ({ key, id }: GetDynamicPath) => {
+  return `${PATH[key]}/${id}`
+}
+
+export const getViewPath = ({ key, id }: GetViewPath) => {
   return `${PATH[key]}/${id}/view`
 }

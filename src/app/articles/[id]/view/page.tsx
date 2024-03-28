@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
 
-import { PATH } from '@/constant/path'
+import { getDynamicPath } from '@/constant/path'
 
 type Props = {
   params: { id: string }
@@ -12,5 +12,6 @@ type Props = {
  * /articles/[id]/viewの画面でリロードしたら、ここにくる
  */
 export default async function Page({ params }: Props) {
-  redirect(`${PATH.ARTICLES}/${params.id}`)
+  const path = getDynamicPath({ key: 'ARTICLES', id: params.id })
+  redirect(path)
 }

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-import { generateViewPath } from '@/constant/path'
+import { getViewPath } from '@/constant/path'
 import { fetchArticlesForNav } from '@/lib/articles/fetchs'
 
 export default async function Page() {
@@ -19,7 +19,7 @@ export default async function Page() {
             key={article.id}
             scroll={false}
             className="bg-white rounded-md p-4"
-            href={generateViewPath({ key: 'ARTICLES', id: article.id })}
+            href={getViewPath({ key: 'ARTICLES', id: article.id })}
           >
             {article.title}
           </Link>
