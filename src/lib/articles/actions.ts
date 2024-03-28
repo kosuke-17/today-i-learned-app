@@ -11,7 +11,7 @@ const CHECKED_CHECKBOX = 'on'
 
 const FormSchema = z.object({
   title: z.string().min(1, { message: '1文字以上入力してください' }),
-  content: z.string().nullable(),
+  content: z.string().min(1, { message: '1文字以上入力してください' }),
   published: z
     .string()
     .nullable()
