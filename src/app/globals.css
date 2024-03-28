@@ -14,4 +14,6 @@
   --secondary-light: #e5e7eb;
   /* bg-gray-700 */
   --secondary-dark: #374151;
+  /* bg-red-500 */
+  --error: #ef4444;
 }

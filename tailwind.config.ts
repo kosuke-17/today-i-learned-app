@@ -10,6 +10,7 @@ const config: Config = {
         'secondary-main': 'var(--secondary-main)',
         'secondary-light': 'var(--secondary-light)',
         'secondary-dark': 'var(--secondary-dark)',
+        error: 'var(--error)',
       },
       flex: {
         '2': '2 2 0%',
