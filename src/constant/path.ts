@@ -9,3 +9,16 @@ export const PATH = {
   USERS: '/users',
   PERSONAL_SETTINGS: '/personal-settings',
 } as const
+
+type PathKey = keyof typeof PATH
+
+type GenerateViewPath = {
+  /** pathのキー */
+  key: PathKey
+  /** idなどのユニークな値 */
+  id: string | number
+}
+
+export const generateViewPath = ({ key, id }: GenerateViewPath) => {
+  return `${PATH[key]}/${id}/view`
+}

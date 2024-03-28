@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation'
 
 import { fetchArticleById } from '@/lib/articles/fetchs'
 
+import ViewModal from './ViewModal'
+
 type Props = {
   params: { id: string }
 }
@@ -13,9 +15,5 @@ export default async function Page({ params }: Props) {
     notFound()
   }
 
-  return (
-    <>
-      <div>{article.title}</div>
-    </>
-  )
+  return <ViewModal article={article} />
 }
