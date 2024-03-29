@@ -1,8 +1,7 @@
 import { notFound } from 'next/navigation'
 
+import ViewModal from '@/components/ViewModal'
 import { fetchArticleById } from '@/lib/articles/fetchs'
-
-import ViewModal from './ViewModal'
 
 type Props = {
   params: { id: string }

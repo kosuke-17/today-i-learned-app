@@ -2,9 +2,8 @@
 
 import { usePathname } from 'next/navigation'
 
+import ModalOverlay from '@/components/Overlay'
 import { ArticleSelect } from '@/lib/articles/definitions'
-
-import ModalOverlay from '../Overlay'
 
 type Props = {
   article: ArticleSelect
