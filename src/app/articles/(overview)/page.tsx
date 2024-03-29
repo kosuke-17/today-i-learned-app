@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-import { getViewPath } from '@/constant/path'
+import { getDynamicPath } from '@/constant/path'
 import { fetchArticlesForNav } from '@/lib/articles/fetchs'
 
 export default async function Page() {
@@ -12,17 +12,30 @@ export default async function Page() {
   }
 
   return (
-    <div className="flex gap-2 mt-4 items-start juzstify-center">
+    <div className="flex flex-wrap gap-2 mt-4 items-start juzstify-center">
       {articles.map((article) => {
         return (
-          <Link
-            key={article.id}
-            scroll={false}
-            className="bg-white rounded-md p-4"
-            href={getViewPath({ key: 'ARTICLES', id: article.id })}
-          >
-            {article.title}
-          </Link>
+          <div key={article.id} className="bg-white rounded-md">
+            <Link
+              scroll={false}
+              className="p-4"
+              href={getDynamicPath({ key: 'ARTICLES', id: article.id })}
+            >
+              {article.title}
+            </Link>
+            <div>
+              <Link
+                scroll={false}
+                href={getDynamicPath({
+                  key: 'ARTICLES',
+                  id: article.id,
+                  suffix: 'edit',
+                })}
+              >
+                編集する
+              </Link>
+            </div>
+          </div>
         )
       })}
     </div>
