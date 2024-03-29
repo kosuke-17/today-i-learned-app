@@ -1,7 +1,7 @@
 import { clsx } from 'clsx'
 
+import ErrorField from '@/app/_features/common/Error/Field'
 import SubmitButton from '@/app/_features/common/SubmitButton/index'
-import ErrorField from '@/components/Error/Field'
 import { FormState } from '@/lib/articles/actions'
 
 export default function MainForm({ state }: { state: FormState }) {
