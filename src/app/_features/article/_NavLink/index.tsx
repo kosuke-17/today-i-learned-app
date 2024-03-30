@@ -1,5 +1,6 @@
 'use client'
 
+import { EllipsisVerticalIcon } from '@heroicons/react/24/outline'
 import { clsx } from 'clsx'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -16,11 +17,15 @@ export default function _NavLink({ name, href }: Props) {
   return (
     <li
       className={clsx(
-        'rounded-md text-white w-full my-0.5',
-        isCurrentPath ? 'bg-emerald-700' : 'hover:bg-emerald-700',
+        'flex justify-between gap-2 px-4 rounded-md text-white w-full my-0.5',
+        isCurrentPath ? 'bg-primary-dark' : 'hover:bg-primary-dark',
       )}
     >
-      <Link href={href}>{name}</Link>
+      <Link href={href} className="truncate flex-1">
+        {name}
+      </Link>
+
+      <EllipsisVerticalIcon className="h-6 w-6 cursor-pointer rounded-full hover:bg-emerald-800" />
     </li>
   )
 }
