@@ -31,7 +31,7 @@ export default function NavLink({ nav }: Props) {
         <span className="flex-1 text-center">{Icon ? <Icon /> : nav.name}</span>
       </Link>
 
-      <Tooltip className="z-10" id={nav.name} place="right" />
+      <Tooltip id={nav.name} place="right" />
     </div>
   )
 }

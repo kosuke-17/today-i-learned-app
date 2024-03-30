@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import _NavLink from '@/app/_features/article/_NavLink'
 import Divider from '@/app/_features/common/Divider'
-import { PATH, getDynamicPath } from '@/constant/path'
+import { PATH } from '@/constant/path'
 import type { ArticleSelectForNav } from '@/lib/articles/definitions'
 import { fetchArticlesForNav } from '@/lib/articles/fetchs'
 
@@ -19,11 +19,7 @@ export default async function ArticleNavBar() {
 
       <ul>
         {articles.map((article) => (
-          <_NavLink
-            name={article.title}
-            key={article.id}
-            href={getDynamicPath({ key: 'ARTICLES', id: article.id })}
-          />
+          <_NavLink id={article.id} name={article.title} key={article.id} />
         ))}
       </ul>
     </div>
