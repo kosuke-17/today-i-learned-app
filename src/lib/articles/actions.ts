@@ -83,7 +83,7 @@ export const createArticle = async (
     revalidatePath(PATH.ARTICLES)
     return {
       message: 'Success: 記事を作成しました!!',
-      status: STATUS_CODE.CREATED,
+      status: STATUS_CODE.SUCCESS,
     }
   } catch (error) {
     return {
@@ -123,7 +123,7 @@ export const updateArticle = async (
     revalidatePath(PATH.ARTICLES)
     return {
       message: 'Success: 記事を更新しました!!',
-      status: STATUS_CODE.CREATED,
+      status: STATUS_CODE.SUCCESS,
     }
   } catch (error) {
     return {
@@ -141,7 +141,7 @@ export const deleteArticle = async (id: string) => {
     revalidatePath(PATH.ARTICLES)
     return {
       message: 'Success: 記事を削除しました!!',
-      status: STATUS_CODE.CREATED,
+      status: STATUS_CODE.SUCCESS,
     }
   } catch (error) {
     return {

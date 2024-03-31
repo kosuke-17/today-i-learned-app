@@ -7,30 +7,38 @@ import { toast } from 'react-toastify'
 
 import MainForm from '@/app/_features/article/MainForm'
 import SubForm from '@/app/_features/article/SubForm'
-import { PATH } from '@/constant/path'
-import { FormState, createArticle } from '@/lib/articles/actions'
+import { getDynamicPath } from '@/constant/path'
+import { FormState, updateArticle } from '@/lib/articles/actions'
+import { ArticleSelect } from '@/lib/articles/definitions'
 import { STATUS_CODE } from '@/lib/status-code'
 
 const initFormState: FormState = { errors: {}, message: '', status: null }
 
-export default function CreateForm() {
-  const [state, dispatch] = useFormState(createArticle, initFormState)
+type Props = {
+  article: ArticleSelect
+}
+export default function EditForm({ article }: Props) {
+  const bindedUpdateArticle = updateArticle.bind(null, article.id)
+  const [state, dispatch] = useFormState(bindedUpdateArticle, initFormState)
   const router = useRouter()
 
   useEffect(() => {
     if (state.status === STATUS_CODE.SUCCESS) {
       toast(state.message)
-      router.push(PATH.ARTICLES)
+      router.push(getDynamicPath({ key: 'ARTICLES', id: article.id }))
     }
-  }, [router, state])
+  }, [article.id, router, state])
 
   return (
     <form action={dispatch} className="flex h-full gap-2 mx-40">
       <div className="flex-5">
-        <MainForm state={state} />
+        <MainForm
+          state={state}
+          defaultValues={{ title: article?.title, content: article?.content }}
+        />
       </div>
       <div className="flex-1 bg-white rounded-md pt-4">
-        <SubForm />
+        <SubForm defaultValue={article?.published} />
       </div>
 
       {/* TODO: 修正 */}

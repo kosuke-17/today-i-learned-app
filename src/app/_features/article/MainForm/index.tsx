@@ -4,7 +4,15 @@ import ErrorField from '@/app/_features/common/Error/Field'
 import SubmitButton from '@/app/_features/common/SubmitButton/index'
 import { FormState } from '@/lib/articles/actions'
 
-export default function MainForm({ state }: { state: FormState }) {
+type Props = {
+  state: FormState
+  defaultValues?: {
+    title?: string
+    content?: string | null
+  }
+}
+
+export default function MainForm({ state, defaultValues }: Props) {
   return (
     <>
       <div className="gap-2 flex h-[5%]">
@@ -15,7 +23,7 @@ export default function MainForm({ state }: { state: FormState }) {
             { 'ring-2 ring-error': !!state.errors?.title },
           )}
           placeholder="タイトル"
-          defaultValue=""
+          defaultValue={defaultValues?.title ? defaultValues.title : ''}
         />
 
         <SubmitButton />
@@ -31,7 +39,7 @@ export default function MainForm({ state }: { state: FormState }) {
             { 'ring-2 ring-error': !!state.errors?.content },
           )}
           placeholder="内容"
-          defaultValue=""
+          defaultValue={defaultValues?.content ? defaultValues.content : ''}
         />
       </div>
 
