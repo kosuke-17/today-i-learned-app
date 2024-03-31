@@ -1,0 +1,74 @@
+/*
+ * 参考
+ * @see: https://freefrontend.medium.com/css-book-effects-e9912cb6711e
+ */
+
+.book {
+  transform-style: preserve-3d;
+  position: relative;
+  height: 120px;
+  cursor: pointer;
+  backface-visibility: visible;
+}
+
+.front,
+.back,
+.page,
+.groove {
+  transform-style: preserve-3d;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform-origin: left center;
+  transition:
+    transform 0.5s ease-in-out,
+    box-shadow 0.35s ease-in-out;
+}
+
+.front,
+.back,
+.page {
+  width: 120px;
+  border-top-left-radius: 0.3em;
+  border-bottom-left-radius: 0.3em;
+  border-bottom-right-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+}
+
+.front {
+  padding-left: 24px;
+}
+
+/* 英語で溝と言うみたい */
+.groove {
+  height: 100%;
+  width: 10px;
+  background: #047857;
+  border-top-left-radius: 0.3em;
+  border-bottom-left-radius: 0.3em;
+}
+
+.front,
+.back {
+  /* primary-main */
+  background: #059669;
+  box-shadow: 0 1em 3em 0 rgba(0, 0, 0, 0.2);
+}
+
+.page {
+  background: #efefef;
+  box-shadow: 0 1em 3em 0 rgba(0, 0, 0, 0.2);
+}
+
+.book:hover .front {
+  transform: rotateY(-32deg) scale(1.1);
+}
+
+.book:hover .page {
+  transform: rotateY(-23deg) scale(1.1);
+}
+
+.book:hover .back {
+  transform: rotateY(-13deg) scale(1.1);
+}

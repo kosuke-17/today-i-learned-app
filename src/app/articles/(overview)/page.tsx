@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation'
 import { getDynamicPath } from '@/constant/path'
 import { fetchArticlesForNav } from '@/lib/articles/fetchs'
 
+import './book.css'
+
 export default async function Page() {
   const articles = await fetchArticlesForNav()
 
@@ -37,15 +39,22 @@ type Props = {
 // 著者を引っ張ってくる
 const Book = ({ id, title, authorName }: Props) => {
   return (
-    <div className="bg-white rounded-md">
-      <Link
-        scroll={false}
-        className="p-4"
-        href={getDynamicPath({ key: 'ARTICLES', id })}
-      >
-        <span className="text-lg font-bold">{title}</span>
-        <span className="text-md">{authorName}</span>
-      </Link>
-    </div>
+    <Link
+      className="p-4 w-[160px]"
+      scroll={false}
+      href={getDynamicPath({ key: 'ARTICLES', id })}
+    >
+      <div className="book">
+        <div className="back"></div>
+        <div className="page"></div>
+        <div className="front text-white">
+          <div className="groove"></div>
+          <div className="gap-2">
+            <span className="text-md block">{title}</span>
+            <span className="text-xs block">{authorName}</span>
+          </div>
+        </div>
+      </div>
+    </Link>
   )
 }
