@@ -16,7 +16,7 @@ export const SUFFIX = {
 }
 
 type PathKey = keyof typeof PATH
-type SuffixType = 'edit' | 'view'
+type SuffixType = 'detail' | 'edit' | 'view'
 
 type GetDynamicPath = {
   /** pathのキー */
@@ -27,7 +27,11 @@ type GetDynamicPath = {
   suffix?: SuffixType
 }
 
-export const getDynamicPath = ({ key, id, suffix }: GetDynamicPath) => {
+export const getDynamicPath = ({
+  key,
+  id,
+  suffix = 'detail',
+}: GetDynamicPath) => {
   const prefix = PATH[key]
-  return suffix ? `${prefix}/${id}/${suffix}` : `${prefix}/${id}`
+  return suffix === 'detail' ? `${prefix}/${id}` : `${prefix}/${id}/${suffix}`
 }
