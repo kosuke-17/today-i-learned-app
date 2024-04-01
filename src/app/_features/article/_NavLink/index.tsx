@@ -30,26 +30,29 @@ export default function _NavLink({ id, name }: Props) {
   return (
     <li
       className={clsx(
-        'flex justify-between gap-2 px-4 rounded-md text-white w-full my-0.5',
+        'relative flex justify-between gap-2 px-8 rounded-md text-white w-full my-0.5',
         isCurrentPath ? 'bg-primary-dark' : 'hover:bg-primary-dark',
       )}
       onMouseOver={showDots}
       onMouseLeave={hideDots}
     >
-      <Link href={hrefDetail} className="truncate flex-1">
+      {/* TODO: truncateが適用されているテキストはhoverした時にTooltipでタイトルが見れるようになるようにする */}
+      <Link href={hrefDetail} className="truncate">
         {name}
       </Link>
 
-      {isShowDots && (
-        <ActionDots
-          id={id}
-          tooltipNode={(onClose) => (
-            <Link href={hrefEdit} onClick={onClose}>
-              編集
-            </Link>
-          )}
-        />
-      )}
+      <div className="absolute top-0 right-2">
+        {isShowDots && (
+          <ActionDots
+            id={id}
+            tooltipNode={(onClose) => (
+              <Link href={hrefEdit} onClick={onClose}>
+                編集
+              </Link>
+            )}
+          />
+        )}
+      </div>
     </li>
   )
 }

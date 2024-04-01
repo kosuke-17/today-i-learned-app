@@ -10,7 +10,7 @@ import { fetchArticlesForNav } from '@/lib/articles/fetchs'
 export default async function ArticleNavBar() {
   const articles: ArticleSelectForNav[] = await fetchArticlesForNav()
   return (
-    <div className="animate-fade-in-left rounded-md w-48 bg-primary-main text-center pt-4">
+    <div className="animate-fade-in-left rounded-md w-44 bg-primary-main text-center pt-4">
       <Link href={PATH.ARTICLES_CREATE} className="flex justify-center flex-1">
         <PlusIcon className="h-8 w-16 px-4 text-white hover:bg-primary-dark rounded-lg" />
       </Link>
