@@ -3,9 +3,9 @@
 import clsx from 'clsx'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Tooltip } from 'react-tooltip'
 
 import type { Nav } from '@/app/_features/common/MainSideNav'
+import Tooltip from '@/components/Tooltip'
 import { getIcon } from '@/lib/icon'
 
 type Props = {

@@ -10,6 +10,7 @@ const config: Config = {
       colors: {
         'primary-main': 'var(--primary-main)',
         'primary-dark': 'var(--primary-dark)',
+        'primary-deep-dark': 'var(--primary-deep-dark)',
         'secondary-main': 'var(--secondary-main)',
         'secondary-light': 'var(--secondary-light)',
         'secondary-dark': 'var(--secondary-dark)',

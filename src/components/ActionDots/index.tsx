@@ -3,8 +3,9 @@ import {
   EllipsisVerticalIcon,
 } from '@heroicons/react/24/outline'
 import { ReactNode, useRef } from 'react'
-import { Tooltip as ReactToolTip, TooltipRefProps } from 'react-tooltip'
+import { TooltipRefProps } from 'react-tooltip'
 
+import Tooltip from '@/components/Tooltip'
 import { DirectionType } from '@/constant/direction'
 
 type Props = {
@@ -29,17 +30,12 @@ export default function ActionDots({
   return (
     <>
       <div id={id}>
-        <DotsIcon className="h-6 w-6 cursor-pointer rounded-full hover:bg-emerald-800" />
+        <DotsIcon className="h-6 w-6 cursor-pointer rounded-full hover:bg-primary-deep-dark" />
       </div>
 
-      <ReactToolTip
-        anchorSelect={`#${id}`}
-        ref={tooltipRef}
-        place="right"
-        clickable
-      >
+      <Tooltip anchorSelect={`#${id}`} ref={tooltipRef} clickable>
         {tooltipNode(onCloseTooltip)}
-      </ReactToolTip>
+      </Tooltip>
     </>
   )
 }
