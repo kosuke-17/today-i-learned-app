@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 
+import Markdown from '@/components/Markdown'
 import { fetchArticleById } from '@/lib/articles/fetchs'
 
 type Props = {
@@ -20,8 +21,7 @@ export default async function Page({ params }: Props) {
           {article.title}
         </div>
         <div className="bg-gray-100">
-          <div>{article.content}</div>
-          <div>{article.content}</div>
+          <Markdown content={article.content ? article.content : ''} />
         </div>
       </div>
       <div className="flex-1 bg-white rounded-md pt-4"></div>
