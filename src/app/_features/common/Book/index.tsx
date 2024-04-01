@@ -15,7 +15,7 @@ export default function Book({ id, title, authorName }: Props) {
     <Link
       className="w-[120px]"
       scroll={false}
-      href={getDynamicPath({ key: 'ARTICLES', id })}
+      href={getDynamicPath({ key: 'ARTICLES', id, suffix: 'view' })}
     >
       <div className="book">
         <div className="back"></div>

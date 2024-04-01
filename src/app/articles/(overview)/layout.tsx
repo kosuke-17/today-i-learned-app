@@ -10,9 +10,9 @@ export default function Layout({
   children: React.ReactNode
 }>) {
   return (
-    <>
+    <div className="mx-20">
       <p className="text-xl font-bold">Today I Learndで学んだ内容</p>
       <div className="w-full">{children}</div>
-    </>
+    </div>
   )
 }

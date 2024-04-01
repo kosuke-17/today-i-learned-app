@@ -11,7 +11,7 @@ export default async function Page() {
   }
 
   return (
-    <div className="flex flex-wrap gap-4 mt-4 mx-20 items-center juzstify-center">
+    <div className="flex flex-wrap gap-4 mt-4 items-center juzstify-center">
       {articles.map((article) => {
         return (
           <ArticleBook
