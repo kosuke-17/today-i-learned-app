@@ -4,7 +4,7 @@ import { PATH } from '@/constant/path'
 export default function NotFound() {
   return (
     <NotFoundContent
-      title="編集する記事が見つかりませんでした."
+      title="削除する記事が見つかりませんでした."
       linkItems={[
         {
           name: '戻る',

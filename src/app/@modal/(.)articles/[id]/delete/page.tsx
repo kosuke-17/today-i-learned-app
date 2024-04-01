@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 
-import ModalView from '@/components/ModalView'
+import ModalDelete from '@/components/ModalDelete'
 import { fetchArticleById } from '@/lib/articles/fetchs'
 
 type Props = {
@@ -9,10 +9,9 @@ type Props = {
 
 export default async function ModalPage({ params }: Props) {
   const article = await fetchArticleById(params.id)
-
   if (!article) {
     notFound()
   }
 
-  return <ModalView article={article} />
+  return <ModalDelete article={article} />
 }

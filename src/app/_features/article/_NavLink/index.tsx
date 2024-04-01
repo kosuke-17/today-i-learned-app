@@ -17,6 +17,7 @@ export default function _NavLink({ id, name }: Props) {
   const [isShowDots, setShowDots] = useState(false)
   const hrefDetail = getDynamicPath({ key: 'ARTICLES', id })
   const hrefEdit = getDynamicPath({ key: 'ARTICLES', id, suffix: 'edit' })
+  const hrefDelete = getDynamicPath({ key: 'ARTICLES', id, suffix: 'delete' })
   const pathName = usePathname()
   const isCurrentPath = pathName === hrefDetail
   const showDots = () => {
@@ -46,9 +47,24 @@ export default function _NavLink({ id, name }: Props) {
           <ActionDots
             id={id}
             tooltipNode={(onClose) => (
-              <Link href={hrefEdit} onClick={onClose}>
-                編集
-              </Link>
+              <>
+                <Link
+                  className="block px-1 rounded-lg hover:bg-primary-main"
+                  scroll={false}
+                  href={hrefEdit}
+                  onClick={onClose}
+                >
+                  編集
+                </Link>
+                <Link
+                  className="block px-1 rounded-lg hover:bg-primary-main"
+                  scroll={false}
+                  href={hrefDelete}
+                  onClick={onClose}
+                >
+                  削除
+                </Link>
+              </>
             )}
           />
         )}

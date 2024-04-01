@@ -12,11 +12,12 @@ export const PATH = {
 
 export const SUFFIX = {
   EDIT: 'edit',
+  DELETE: 'delete',
   VIEW: 'view',
-}
+} as const
 
 type PathKey = keyof typeof PATH
-type SuffixType = 'detail' | 'edit' | 'view'
+type SuffixType = 'detail' | (typeof SUFFIX)[keyof typeof SUFFIX]
 
 type GetDynamicPath = {
   /** pathのキー */
