@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 
-import Content from '@/app/_features/common/Content'
-import Main from '@/app/_features/common/Main'
-import MainSideNav from '@/app/_features/common/MainSideNav'
+import ContentWrapper from '@/app/_features/layout/ContentWrapper'
+import Main from '@/app/_features/layout/Main'
+import MainSideNav from '@/app/_features/layout/MainSideNav'
 
 export const metadata: Metadata = {
   title: 'ホーム',
@@ -16,7 +16,7 @@ export default function Layout({
   return (
     <Main>
       <MainSideNav />
-      <Content>{children}</Content>
+      <ContentWrapper>{children}</ContentWrapper>
     </Main>
   )
 }

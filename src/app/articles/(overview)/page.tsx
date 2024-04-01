@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 
-import ArticleBook from '@/app/_features/common/Book'
+import ArticleBook from '@/components/Book'
 import { fetchArticlesForNav } from '@/lib/articles/fetchs'
 
 export default async function Page() {

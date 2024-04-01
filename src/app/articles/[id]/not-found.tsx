@@ -1,4 +1,4 @@
-import NotFoundContent from '@/app/_features/common/NotFoundContent'
+import NotFoundContent from '@/app/_features/layout/NotFoundContent'
 import { PATH } from '@/constant/path'
 
 export default function NotFound() {

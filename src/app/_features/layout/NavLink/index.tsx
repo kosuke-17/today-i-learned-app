@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import type { Nav } from '@/app/_features/common/MainSideNav'
+import type { Nav } from '@/app/_features/layout/MainSideNav'
 import Tooltip from '@/components/Tooltip'
 import { getIcon } from '@/lib/icon'
 

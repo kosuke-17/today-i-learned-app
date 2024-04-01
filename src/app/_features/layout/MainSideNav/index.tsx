@@ -1,4 +1,4 @@
-import NavLink from '@/app/_features/common/NavLink'
+import NavLink from '@/app/_features/layout/NavLink'
 import { ICON } from '@/constant/icon'
 import { PATH } from '@/constant/path'
 import { NavIconType } from '@/lib/icon'

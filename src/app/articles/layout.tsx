@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 
 import ArticleSideNav from '@/app/_features/article/SideNav'
-import Content from '@/app/_features/common/Content'
-import Main from '@/app/_features/common/Main'
-import MainSideNav from '@/app/_features/common/MainSideNav'
+import ContentWrapper from '@/app/_features/layout/ContentWrapper'
+import Main from '@/app/_features/layout/Main'
+import MainSideNav from '@/app/_features/layout/MainSideNav'
 
 export const metadata: Metadata = {
   title: '記事一覧',
@@ -18,7 +18,7 @@ export default function Layout({
     <Main>
       <MainSideNav />
       <ArticleSideNav />
-      <Content>{children}</Content>
+      <ContentWrapper>{children}</ContentWrapper>
     </Main>
   )
 }
