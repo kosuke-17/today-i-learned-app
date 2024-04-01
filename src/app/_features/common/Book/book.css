@@ -6,8 +6,7 @@
 .book {
   transform-style: preserve-3d;
   position: relative;
-  height: 120px;
-  cursor: pointer;
+  height: 140px;
   backface-visibility: visible;
 }
 
@@ -36,10 +35,6 @@
   border-top-right-radius: 0.5em;
 }
 
-.front {
-  padding-left: 24px;
-}
-
 /* 英語で溝と言うみたい */
 .groove {
   height: 100%;
@@ -53,12 +48,11 @@
 .back {
   /* primary-main */
   background: #059669;
-  box-shadow: 0 1em 3em 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 0.5em 0 rgba(0, 0, 0, 0.2);
 }
 
 .page {
   background: #efefef;
-  box-shadow: 0 1em 3em 0 rgba(0, 0, 0, 0.2);
 }
 
 .book:hover .front {
