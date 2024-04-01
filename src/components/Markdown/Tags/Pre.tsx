@@ -1,11 +1,9 @@
-import type { ClassAttributes, HTMLAttributes } from 'react'
-import type { ExtraProps } from 'react-markdown'
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/default-highlight'
 import darcula from 'react-syntax-highlighter/dist/esm/styles/hljs/darcula'
 
-type Props = ClassAttributes<HTMLPreElement> &
-  HTMLAttributes<HTMLPreElement> &
-  ExtraProps
+import { BaseTagProps } from '.'
+
+type Props = BaseTagProps<HTMLPreElement>
 
 export default function Pre({ children, ...props }: Props) {
   if (!children || typeof children !== 'object') {

@@ -1,9 +1,6 @@
-import { ClassAttributes, HTMLAttributes } from 'react'
-import { ExtraProps } from 'react-markdown'
+import { BaseTagProps } from '.'
 
-type Props = ClassAttributes<HTMLUListElement> &
-  HTMLAttributes<HTMLUListElement> &
-  ExtraProps
+type Props = BaseTagProps<HTMLUListElement>
 
 export default function UnorderedList({ children }: Props) {
   return <ul className="list-disc pl-5">{children}</ul>

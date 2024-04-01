@@ -1,10 +1,7 @@
 // Heading → h1,h2, ...
-import type { ClassAttributes, HTMLAttributes } from 'react'
-import type { ExtraProps } from 'react-markdown'
+import { BaseTagProps } from '.'
 
-type Props = ClassAttributes<HTMLHeadingElement> &
-  HTMLAttributes<HTMLHeadingElement> &
-  ExtraProps
+type Props = BaseTagProps<HTMLHeadingElement>
 
 const baseStyle = 'my-5 border-b border-gray-300'
 
