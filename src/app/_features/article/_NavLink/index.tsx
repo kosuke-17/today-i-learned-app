@@ -1,12 +1,14 @@
 'use client'
 
 import { clsx } from 'clsx'
-import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
 import ActionDots from '@/components/ActionDots'
+import Link from '@/components/Link'
 import { getDynamicPath } from '@/constant/path'
+
+import Actions from './Actions'
 
 type Props = {
   id: string
@@ -28,6 +30,17 @@ export default function _NavLink({ id, name }: Props) {
     setShowDots(false)
   }
 
+  const actions = [
+    {
+      text: '編集',
+      href: hrefEdit,
+    },
+    {
+      text: '削除',
+      href: hrefDelete,
+    },
+  ]
+
   return (
     <li
       className={clsx(
@@ -38,33 +51,18 @@ export default function _NavLink({ id, name }: Props) {
       onMouseLeave={hideDots}
     >
       {/* TODO: truncateが適用されているテキストはhoverした時にTooltipでタイトルが見れるようになるようにする */}
-      <Link href={hrefDetail} className="truncate">
-        {name}
-      </Link>
+      <Link
+        textNode={name}
+        href={hrefDetail}
+        className="truncate hover:bg-primary-dark"
+      />
 
       <div className="absolute top-0 right-2">
         {isShowDots && (
           <ActionDots
             id={id}
             tooltipNode={(onClose) => (
-              <>
-                <Link
-                  className="block px-1 rounded-lg hover:bg-primary-main"
-                  scroll={false}
-                  href={hrefEdit}
-                  onClick={onClose}
-                >
-                  編集
-                </Link>
-                <Link
-                  className="block px-1 rounded-lg hover:bg-primary-main"
-                  scroll={false}
-                  href={hrefDelete}
-                  onClick={onClose}
-                >
-                  削除
-                </Link>
-              </>
+              <Actions actions={actions} onClose={onClose} />
             )}
           />
         )}
