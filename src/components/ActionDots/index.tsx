@@ -6,7 +6,7 @@ import { ReactNode, useRef } from 'react'
 import { TooltipRefProps } from 'react-tooltip'
 
 import Tooltip from '@/components/Tooltip'
-import { DirectionType } from '@/constant/direction'
+import { DIRECTION, DirectionType } from '@/constant/direction'
 
 type Props = {
   id: string
@@ -17,11 +17,13 @@ type Props = {
 export default function ActionDots({
   id,
   tooltipNode,
-  direction = 'vertical',
+  direction = DIRECTION.VERTICAL,
 }: Props) {
   const tooltipRef = useRef<TooltipRefProps>(null)
   const DotsIcon =
-    direction === 'vertical' ? EllipsisVerticalIcon : EllipsisHorizontalIcon
+    direction === DIRECTION.VERTICAL
+      ? EllipsisVerticalIcon
+      : EllipsisHorizontalIcon
 
   const onCloseTooltip = () => {
     tooltipRef.current?.close()

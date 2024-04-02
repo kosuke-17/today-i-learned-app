@@ -26,7 +26,7 @@ export default function MainForm({ state, defaultValues }: Props) {
           defaultValue={defaultValues?.title ? defaultValues.title : ''}
         />
 
-        <SubmitButton />
+        <SubmitButton text="送信" />
       </div>
 
       {state.errors?.title && <ErrorField error={state.errors.title} />}

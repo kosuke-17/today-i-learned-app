@@ -44,7 +44,7 @@ export default function ModalDelete({ article }: Props) {
           {article.title}を削除しますか？
         </div>
         <div className="absolute bottom-4 right-2 gap-2 flex justify-end">
-          <Button className="px-4 py-2" type="button" onClick={onBack}>
+          <Button type="button" onClick={onBack}>
             キャンセル
           </Button>
           <SubmitButton text="削除" />

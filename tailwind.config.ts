@@ -16,6 +16,9 @@ const config: Config = {
         'secondary-dark': 'var(--secondary-dark)',
         error: 'var(--error)',
       },
+      borderWidth: {
+        '1': '1px',
+      },
       flex: {
         '2': '2 2 0%',
         '5': '5 5 0%',

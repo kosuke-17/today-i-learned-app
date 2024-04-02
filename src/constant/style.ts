@@ -11,3 +11,11 @@ export const COLOR = {
 export const Z_INDEX = {
   TOOLTIP: 1,
 }
+
+export const VARIANT = {
+  TEXT: 'text',
+  ELEVATE: 'elevate',
+  FILL: 'fill',
+  OUTLINE: 'outline',
+} as const
+export type Variant = (typeof VARIANT)[keyof typeof VARIANT]
