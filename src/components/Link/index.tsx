@@ -1,13 +1,10 @@
-import Link from 'next/link'
-import { ReactNode } from 'react'
+import Link, { type LinkProps } from 'next/link'
+import { AnchorHTMLAttributes, ReactNode } from 'react'
 
-type Props = {
-  textNode: string | ReactNode
-  href: string
-  id?: string
-  className?: string
-  onClick?: () => void
-}
+type Props = LinkProps &
+  AnchorHTMLAttributes<HTMLAnchorElement> & {
+    textNode: string | ReactNode
+  }
 
 export default function CustomLink({
   textNode,
