@@ -1,15 +1,15 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
+import { ReactNode } from 'react'
 
 import Overlay from '@/components/Overlay'
-import { ArticleSelect } from '@/lib/articles/definitions'
 
 type Props = {
-  article: ArticleSelect
+  content: ReactNode
 }
 
-export default function ModalView({ article }: Props) {
+export default function ModalView({ content }: Props) {
   /**
    * Parallel RouteとIntercepting Routeによるモーダルのバグを修正
    */
@@ -19,7 +19,9 @@ export default function ModalView({ article }: Props) {
   return (
     <div className="fixed left-0 top-0 z-10 grid h-full w-full place-items-center">
       <Overlay />
-      <div className="bg-white w-40 z-10 h-40">{article.title}</div>
+      <div className="bg-white rounded-lg mx-60 overflow-scroll max-h-[500px] z-10">
+        {content}
+      </div>
     </div>
   )
 }

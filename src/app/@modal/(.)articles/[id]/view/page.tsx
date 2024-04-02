@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 
+import Detail from '@/app/_features/article/Detail'
 import ModalView from '@/components/ModalView'
 import { fetchArticleById } from '@/lib/articles/fetchs'
 
@@ -14,5 +15,5 @@ export default async function ModalPage({ params }: Props) {
     notFound()
   }
 
-  return <ModalView article={article} />
+  return <ModalView content={<Detail article={article} />} />
 }
