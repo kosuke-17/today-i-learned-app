@@ -5,10 +5,10 @@
 import { ClassAttributes, HTMLAttributes } from 'react'
 import { ExtraProps } from 'react-markdown'
 
-export { default as Anchor } from './Anchor'
-export { default as Pre } from './Pre'
-export { default as Headings } from './Headings'
-export { default as UnorderedList } from './UnorderedList'
+export { default as Anchor } from './_Anchor'
+export { default as Pre } from './_Pre'
+export { default as Headings } from './_Headings'
+export { default as UnorderedList } from './_UnorderedList'
 
 export type BaseTagProps<T = HTMLElement> = ClassAttributes<T> &
   HTMLAttributes<T> &
