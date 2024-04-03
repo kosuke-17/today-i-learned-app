@@ -6,6 +6,7 @@ export const PATH = {
   HOME: '/home',
   ARTICLES: '/articles',
   ARTICLES_CREATE: '/articles/create',
+  ARTICLES_BULK_DELETE: '/articles/bulk-delete',
   USERS: '/users',
   PERSONAL_SETTINGS: '/personal-settings',
 } as const

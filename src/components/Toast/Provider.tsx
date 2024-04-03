@@ -17,7 +17,7 @@ export default function ToastProvider({ children }: Props) {
   return (
     <>
       {children}
-      <ToastContainer />
+      <ToastContainer autoClose={3000} />
     </>
   )
 }

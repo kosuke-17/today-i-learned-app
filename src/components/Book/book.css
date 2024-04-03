@@ -1,6 +1,8 @@
 /*
  * 参考
  * @see: https://freefrontend.medium.com/css-book-effects-e9912cb6711e
+ *
+ * TODO: transformを使用すると、他のfixedが効かないので、修正する必要があるか調べる
  */
 
 .book {

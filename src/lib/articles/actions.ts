@@ -150,3 +150,49 @@ export const deleteArticle = async (id: string) => {
     }
   }
 }
+
+export type BulkDeleteState = {
+  errors?: {
+    ids?: string[]
+  }
+  message: string
+  status: StatusCodeType | null
+}
+
+const BulkDeleteSchema = z.object({
+  ids: z.array(z.string()).min(1, '削除する記事を1つ以上選択してください'),
+})
+
+export const bulkDeleteArticle = async (
+  _: BulkDeleteState,
+  formData: FormData,
+) => {
+  const validatedFields = BulkDeleteSchema.safeParse({
+    ids: formData.getAll('ids'),
+  })
+
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: validatedFields.error.message,
+      status: STATUS_CODE.UNPROCESSABLE_ENTITY,
+    }
+  }
+
+  try {
+    await prisma.article.deleteMany({
+      where: { id: { in: validatedFields.data.ids } },
+    })
+
+    revalidatePath(PATH.ARTICLES)
+    return {
+      message: 'Success: 記事を一括削除しました!!',
+      status: STATUS_CODE.SUCCESS,
+    }
+  } catch (error) {
+    return {
+      message: 'Database Error: 記事の一括削除に失敗しました',
+      status: STATUS_CODE.INTERNAL_SERVER_ERROR,
+    }
+  }
+}

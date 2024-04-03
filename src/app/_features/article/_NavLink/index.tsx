@@ -16,18 +16,19 @@ type Props = {
 }
 
 export default function _NavLink({ id, name }: Props) {
-  const [isShowDots, setShowDots] = useState(false)
+  const [isShowAction, setAction] = useState(false)
   const hrefDetail = getDynamicPath({ key: 'ARTICLES', id })
   const hrefEdit = getDynamicPath({ key: 'ARTICLES', id, suffix: 'edit' })
   const hrefDelete = getDynamicPath({ key: 'ARTICLES', id, suffix: 'delete' })
   const pathName = usePathname()
   const isCurrentPath = pathName === hrefDetail
-  const showDots = () => {
-    setShowDots(true)
+
+  const showAction = () => {
+    setAction(true)
   }
 
-  const hideDots = () => {
-    setShowDots(false)
+  const hideAction = () => {
+    setAction(false)
   }
 
   const actions = [
@@ -47,8 +48,8 @@ export default function _NavLink({ id, name }: Props) {
         'relative flex justify-between gap-2 px-8 rounded-md text-white w-full my-0.5',
         isCurrentPath ? 'bg-primary-dark' : 'hover:bg-primary-dark',
       )}
-      onMouseOver={showDots}
-      onMouseLeave={hideDots}
+      onMouseOver={showAction}
+      onMouseLeave={hideAction}
     >
       {/* TODO: truncateが適用されているテキストはhoverした時にTooltipでタイトルが見れるようになるようにする */}
       <Link
@@ -58,7 +59,7 @@ export default function _NavLink({ id, name }: Props) {
       />
 
       <div className="absolute top-0 right-2">
-        {isShowDots && (
+        {isShowAction && (
           <ActionDots
             id={id}
             tooltipNode={(onClose) => (
