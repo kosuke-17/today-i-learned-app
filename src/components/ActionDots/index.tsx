@@ -36,7 +36,11 @@ export default function ActionDots({
       </div>
 
       <Tooltip
-        style={{ backgroundColor: '#FFF', paddingLeft: 4, paddingRight: 4 }}
+        style={{
+          backgroundColor: '#FFF',
+          padding: 4,
+        }}
+        opacity={1}
         anchorSelect={`#${id}`}
         ref={tooltipRef}
         clickable
