@@ -1,13 +1,15 @@
 import Link from '@/components/Link'
 
+type Action = { text: string; href: string }
+
 type Props = {
-  actions: { text: string; href: string }[]
+  actions: Action[]
   onClose: () => void
 }
 
 export default function Actions({ actions, onClose }: Props) {
   return (
-    <div className="bg-white rounded-md p-2">
+    <>
       {actions.map((a) => (
         <div key={a.href}>
           <Link
@@ -18,6 +20,6 @@ export default function Actions({ actions, onClose }: Props) {
           />
         </div>
       ))}
-    </div>
+    </>
   )
 }

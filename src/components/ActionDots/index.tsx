@@ -35,7 +35,12 @@ export default function ActionDots({
         <DotsIcon className="h-6 w-6 cursor-pointer rounded-full hover:bg-primary-deep-dark" />
       </div>
 
-      <Tooltip anchorSelect={`#${id}`} ref={tooltipRef} clickable>
+      <Tooltip
+        style={{ backgroundColor: '#FFF', paddingLeft: 4, paddingRight: 4 }}
+        anchorSelect={`#${id}`}
+        ref={tooltipRef}
+        clickable
+      >
         {tooltipNode(onCloseTooltip)}
       </Tooltip>
     </>
