@@ -1,4 +1,4 @@
-import BlockTable from '../_features/block/Table'
+import BlockTable from '@/app/_features/block/table'
 
 export default async function Page() {
   return (

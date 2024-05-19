@@ -1,7 +1,8 @@
-import { BlockSelect } from '@/lib/blocks/definitions'
 import { fetchBlocks } from '@/lib/blocks/fetchs'
 
-import { BlockAddButton } from './BlockActionButtons'
+import { BlockAddButton } from '../ActionButtons'
+import TableHead from './Head'
+import TableRow from './Row'
 
 export default async function BlockTable() {
   const blocks = await fetchBlocks()
@@ -17,28 +18,6 @@ export default async function BlockTable() {
         <BlockAddRow />
       </tbody>
     </table>
-  )
-}
-
-const TableHead = () => {
-  return (
-    <thead className="text-white bg-secondary-main">
-      <tr>
-        <th scope="col" className="px-6 py-3">
-          name
-        </th>
-      </tr>
-    </thead>
-  )
-}
-
-const TableRow = ({ block }: { block: BlockSelect }) => {
-  return (
-    <tr className="border-b bg-secondary-light">
-      <td scope="row" className="px-6 py-4 font-light bg-white">
-        {block.name}
-      </td>
-    </tr>
   )
 }
 
