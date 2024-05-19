@@ -27,3 +27,26 @@ model Article {
   author    User?   @relation(fields: [authorId], references: [id])
   authorId  String?
 }
+
+model Block {
+  id           String    @default(cuid()) @id
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  hierarchyId  String @unique
+
+  name String?
+
+  blockType   BlockType  @relation(fields: [blockTypeId], references: [id])
+  blockTypeId String
+}
+
+model BlockType {
+  id           String    @default(cuid()) @id
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  name String
+
+  blocks Block[]
+}
