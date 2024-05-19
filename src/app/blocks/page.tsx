@@ -1,9 +1,8 @@
+import { BlockSelect } from '@/lib/blocks/definitions'
+import { fetchBlocks } from '@/lib/blocks/fetchs'
+
 export default async function Page() {
-  const blocks = [
-    { id: '1', name: 'Apple MacBook Pro' },
-    { id: '2', name: 'Microsoft Surface Pro' },
-    { id: '3', name: 'a' },
-  ]
+  const blocks = await fetchBlocks()
   return (
     <>
       <div className="relative h-full flex justify-center items-center">
@@ -34,7 +33,7 @@ const TableHead = () => {
   )
 }
 
-const TableRow = ({ block }: { block: { id: string; name: string } }) => {
+const TableRow = ({ block }: { block: BlockSelect }) => {
   return (
     <tr className="border-b bg-secondary-light">
       <td scope="row" className="px-6 py-4 font-light bg-white">
