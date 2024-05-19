@@ -3,6 +3,7 @@ import { ReactNode } from 'react'
 
 import ToastProvider from '@/components/Toast/Provider'
 
+import TSQLayout from './_features/layout/TSQLayout'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -19,10 +20,12 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body>
-        <ToastProvider>
-          {children}
-          {modal}
-        </ToastProvider>
+        <TSQLayout>
+          <ToastProvider>
+            {children}
+            {modal}
+          </ToastProvider>
+        </TSQLayout>
       </body>
     </html>
   )
