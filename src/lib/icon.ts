@@ -6,19 +6,14 @@ import {
   InboxIcon,
 } from '@heroicons/react/24/outline'
 
-export type NavIconType =
-  | 'home'
-  | 'blocks'
-  | 'articles'
-  | 'users'
-  | 'personal-settings'
+import { ICON, IconType } from '@/constant/icon'
 
-export const getIcon = (iconType: NavIconType) => {
-  if (iconType === 'home') return HomeIcon
-  if (iconType === 'blocks') return InboxIcon
-  if (iconType === 'articles') return DocumentDuplicateIcon
-  if (iconType === 'users') return UserCircleIcon
-  if (iconType === 'personal-settings') return Cog6ToothIcon
+export const getIcon = (iconType: IconType) => {
+  if (iconType === ICON.HOME) return HomeIcon
+  if (iconType === ICON.BLOCK) return InboxIcon
+  if (iconType === ICON.ARTICLES) return DocumentDuplicateIcon
+  if (iconType === ICON.USERS) return UserCircleIcon
+  if (iconType === ICON.PERSONAL_SETTINGS) return Cog6ToothIcon
 
   return null
 }

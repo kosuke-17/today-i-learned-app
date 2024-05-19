@@ -1,12 +1,11 @@
 import NavLink from '@/app/_features/layout/NavLink'
-import { ICON } from '@/constant/icon'
+import { ICON, IconType } from '@/constant/icon'
 import { PATH } from '@/constant/path'
-import { NavIconType } from '@/lib/icon'
 
 export type Nav = {
   name: string
   href: string
-  iconType: NavIconType
+  iconType: IconType
 }
 
 const navs: Nav[] = [

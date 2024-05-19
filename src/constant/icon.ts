@@ -5,3 +5,5 @@ export const ICON = {
   USERS: 'users',
   PERSONAL_SETTINGS: 'personal-settings',
 } as const
+
+export type IconType = (typeof ICON)[keyof typeof ICON]
