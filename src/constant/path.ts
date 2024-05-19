@@ -4,6 +4,7 @@
  */
 export const PATH = {
   HOME: '/home',
+  BLOCKS: '/blocks',
   ARTICLES: '/articles',
   ARTICLES_CREATE: '/articles/create',
   ARTICLES_BULK_DELETE: '/articles/bulk-delete',

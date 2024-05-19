@@ -16,6 +16,11 @@ const navs: Nav[] = [
     iconType: ICON.HOME,
   },
   {
+    name: 'ブロック',
+    href: PATH.BLOCKS,
+    iconType: ICON.BLOCK,
+  },
+  {
     name: '記事',
     href: PATH.ARTICLES,
     iconType: ICON.ARTICLES,
