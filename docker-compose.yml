@@ -14,20 +14,21 @@ services:
     volumes:
       - ./dist/data:/var/lib/til-app/data
 
-  til-app:
-    container_name: 'til-app'
-    build:
-      context: .
-      dockerfile: Dockerfile
-    restart: always
-    command: yarn dev
-    environment:
-      - NODE_ENV=development
-      - DATABASE_URL=postgresql://til-app:til-app@postgres:5432/til-app
-    volumes:
-      - .:/app
-      - /app/node_modules
-      - /app/.next
-    ports:
-      - '3000:3000'
-    tty: true
+  # うまくいかない
+  # til-app:
+  #   container_name: 'til-app'
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   restart: always
+  #   command: yarn dev
+  #   environment:
+  #     - NODE_ENV=development
+  #     - DATABASE_URL=postgresql://til-app:til-app@postgres:5432/til-app
+  #   volumes:
+  #     - .:/app
+  #     - /app/node_modules
+  #     - /app/.next
+  #   ports:
+  #     - '3000:3000'
+  #   tty: true
