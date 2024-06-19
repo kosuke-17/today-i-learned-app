@@ -15,7 +15,21 @@ model User {
   name          String
   email         String   @unique
   articles      Article[]
+  secret        Secret?
 }
+
+model Secret {
+  id           String    @default(cuid()) @id
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  password String
+  token String @unique
+
+  user User @relation(fields: [userId], references: [id])
+  userId String @unique
+}
+
 
 model Article {
   id        String     @default(cuid()) @id
