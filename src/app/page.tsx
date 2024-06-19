@@ -1,7 +1,5 @@
-import { redirect } from 'next/navigation'
-
-import { PATH } from '@/constant/path'
+import SignUpPage from '@/app/auth/sign-up/page'
 
 export default async function Page() {
-  redirect(PATH.BLOCKS)
+  return <SignUpPage />
 }
