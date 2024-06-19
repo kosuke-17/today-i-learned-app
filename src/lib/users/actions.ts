@@ -1,5 +1,7 @@
 'use server'
 
+import { randomUUID as randomUUIDV4 } from 'crypto'
+import { cookies } from 'next/headers'
 import { z } from 'zod'
 
 import { prisma } from '@/lib/prisma'
@@ -63,13 +65,23 @@ export const createUser = async (_: FormState, formData: FormData) => {
       message: 'Unauthorized Error: ユーザー作成に失敗しました',
       status: STATUS_CODE.BAD_REQUEST,
     }
+  // TODO: bcryptが使えないようなので、コメントアウト
+  // const hash = await bcrypt.hash(data.password, 10)
+  const token = randomUUIDV4()
 
   try {
     const user = await prisma.user.create({
       data: {
         name: data.name,
         email: data.email,
+        secret: { create: { token, password: data.password } },
       },
+    })
+
+    cookies().set({
+      name: 'sessionToken',
+      value: token,
+      httpOnly: true,
     })
 
     if (!user) {
