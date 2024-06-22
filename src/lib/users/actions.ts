@@ -1,17 +1,14 @@
 'use server'
 
-import { randomUUID as randomUUIDV4 } from 'crypto'
+import { Secret, User } from '@prisma/client'
 import { cookies } from 'next/headers'
-import { z } from 'zod'
 
 import { prisma } from '@/lib/prisma'
 import { STATUS_CODE, StatusCodeType } from '@/lib/status-code'
+import { genToken } from '@/lib/uuid'
 
-const formSchema = z.object({
-  name: z.string().min(1, { message: '1文字以上入力してください' }),
-  email: z.string().min(1, { message: '1文字以上入力してください' }),
-  password: z.string().min(1, { message: '1文字以上入力してください' }),
-})
+import { selectUserForLogin } from './definitions'
+import { validateFields } from './validation'
 
 export type FormState = {
   errors?: {
@@ -23,27 +20,27 @@ export type FormState = {
   status: StatusCodeType | null
 }
 
-const validateFields = (formData: FormData, message: string) => {
-  const validatedFields = formSchema.safeParse({
-    name: formData.get('name'),
-    email: formData.get('email'),
-    password: formData.get('password'),
+export const findUserForLogin = async ({
+  email,
+  password,
+}: {
+  email?: User['email']
+  password?: Secret['password']
+}) => {
+  return await prisma.user.findFirst({
+    select: selectUserForLogin,
+    where: {
+      email,
+      secret: { password },
+    },
   })
+}
 
-  if (!validatedFields.success) {
-    return {
-      isError: true,
-      errors: validatedFields.error.flatten().fieldErrors,
-      message,
-      status: STATUS_CODE.UNPROCESSABLE_ENTITY,
-    }
-  }
-
-  return {
-    isError: false,
-    data: validatedFields.data,
-    message: '', // TODO: 削除
-  }
+export const findUserById = async ({ id }: { id: User['id'] }) => {
+  return await prisma.user.findFirst({
+    where: { id },
+    select: { name: true },
+  })
 }
 
 export const createUser = async (_: FormState, formData: FormData) => {
@@ -67,7 +64,7 @@ export const createUser = async (_: FormState, formData: FormData) => {
     }
   // TODO: bcryptが使えないようなので、コメントアウト
   // const hash = await bcrypt.hash(data.password, 10)
-  const token = randomUUIDV4()
+  const token = genToken()
 
   try {
     const user = await prisma.user.create({
