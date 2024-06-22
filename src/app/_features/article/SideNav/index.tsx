@@ -32,14 +32,14 @@ export default async function ArticleNavBar() {
     <div className="animate-fade-in-left rounded-md w-44 bg-primary-main text-center pt-4">
       <Link textNode={CreateNav} href={PATH.ARTICLES_CREATE} />
 
-      <Divider />
+      <Divider className="my-2 mx-8" />
 
       <ul>
         {articles.map((article) => (
           <_NavLink id={article.id} name={article.title} key={article.id} />
         ))}
       </ul>
-      <Divider />
+      <Divider className="my-2 mx-8" />
 
       <Link textNode={DeleteNav} href={PATH.ARTICLES_BULK_DELETE} />
     </div>
