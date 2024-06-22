@@ -11,20 +11,32 @@ import CustomLink from '@/components/Link'
 import SubmitButton from '@/components/SubmitButton'
 import { PATH } from '@/constant/path'
 import { STATUS_CODE } from '@/lib/status-code'
+import { useLoginUserStore } from '@/lib/stores/loginUser/store'
 import { FormState, createUser } from '@/lib/users/actions'
 
-const initFormState: FormState = { errors: {}, message: '', status: null }
+const initFormState: FormState = {
+  errors: {},
+  message: '',
+  status: null,
+  data: undefined,
+}
 
 export default function Page() {
   const [state, dispatch] = useFormState(createUser, initFormState)
   const router = useRouter()
+  const { setLoginUser } = useLoginUserStore()
 
   useEffect(() => {
     if (state.status === STATUS_CODE.SUCCESS) {
       toast(state.message)
       router.push(PATH.HOME)
+
+      const user = state.data?.user
+      if (user) {
+        setLoginUser(user)
+      }
     }
-  }, [router, state])
+  }, [router, setLoginUser, state])
 
   return (
     <Main>

@@ -18,6 +18,11 @@ export type FormState = {
   }
   message: string
   status: StatusCodeType | null
+  data?: {
+    user: {
+      name: string
+    } | null
+  }
 }
 
 export const findUserForLogin = async ({
@@ -67,7 +72,7 @@ export const createUser = async (_: FormState, formData: FormData) => {
   const token = genToken()
 
   try {
-    const user = await prisma.user.create({
+    const createdUser = await prisma.user.create({
       data: {
         name: data.name,
         email: data.email,
@@ -81,16 +86,19 @@ export const createUser = async (_: FormState, formData: FormData) => {
       httpOnly: true,
     })
 
-    if (!user) {
+    if (!createdUser) {
       return {
         message: 'Bad Request Error: ユーザー作成に失敗しました',
         status: STATUS_CODE.UNAUTHORIZED,
       }
     }
 
+    const user = await findUserById({ id: createdUser.id })
+
     return {
       message: 'Success: ユーザー作成に成功しました!!',
       status: STATUS_CODE.SUCCESS,
+      data: { user },
     }
   } catch (error) {
     return {

@@ -12,6 +12,7 @@ import SubmitButton from '@/components/SubmitButton'
 import { PATH } from '@/constant/path'
 import { FormState, loginUser } from '@/lib/auth/actions'
 import { STATUS_CODE } from '@/lib/status-code'
+import { useLoginUserStore } from '@/lib/stores/loginUser/store'
 
 const initFormState: FormState = {
   errors: {},
@@ -23,13 +24,19 @@ const initFormState: FormState = {
 export default function Page() {
   const [state, dispatch] = useFormState(loginUser, initFormState)
   const router = useRouter()
+  const { setLoginUser } = useLoginUserStore()
 
   useEffect(() => {
     if (state.status === STATUS_CODE.OK) {
       toast(state.message)
       router.push(PATH.HOME)
     }
-  }, [router, state])
+    const user = state.data?.user
+
+    if (user) {
+      setLoginUser(user)
+    }
+  }, [router, setLoginUser, state])
 
   return (
     <Main>
