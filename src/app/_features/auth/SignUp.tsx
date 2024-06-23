@@ -34,6 +34,7 @@ export default function SignUp() {
       className="w-96 rounded-md p-4 bg-secondary-light grid gap-4"
     >
       <span className="text-xl font-bold">ユーザー作成</span>
+      {/* TODO: リファクタ */}
       <input
         name="name"
         className={clsx(
