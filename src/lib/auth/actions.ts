@@ -6,7 +6,6 @@ import { cookies } from 'next/headers'
 import { prisma } from '@/lib/prisma'
 import { STATUS_CODE, StatusCodeType } from '@/lib/status-code'
 import { findUserForLogin } from '@/lib/users/actions'
-import { findUserById } from '@/lib/users/fetchs'
 import { Token, genToken } from '@/lib/uuid'
 
 import { validateFields } from './validation'
@@ -18,11 +17,6 @@ export type FormState = {
   }
   message: string
   status: StatusCodeType | null
-  data?: {
-    user: {
-      name: string
-    } | null
-  }
 }
 
 const { OK, BAD_REQUEST, UNAUTHORIZED, INTERNAL_SERVER_ERROR } = STATUS_CODE
@@ -56,12 +50,9 @@ export const loginUser = async (_: FormState, formData: FormData) => {
     updateToken({ id: loginUser.secret?.id, token })
     resetSessionCookies({ name: 'sessionToken', token })
 
-    const userData = await findUserById({ id: loginUser.id })
-
     return {
       message: 'Success: ログインに成功しました!!',
       status: OK,
-      data: { user: userData },
     }
   } catch (error) {
     return {
