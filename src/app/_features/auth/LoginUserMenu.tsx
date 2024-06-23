@@ -4,7 +4,7 @@ import Divider from '@/app/_features/layout/Divider'
 import CustomIcon from '@/components/Icon'
 import Tooltip from '@/components/Tooltip'
 import { ICON } from '@/constant/icon'
-import { UserSelectForFindUser } from '@/lib/users/definitions'
+import { UserSelectForFindUser } from '@/lib/users'
 
 import LogoutBtn from './LogoutBtn'
 

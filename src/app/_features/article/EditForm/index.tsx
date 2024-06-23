@@ -11,7 +11,7 @@ import { getDynamicPath } from '@/constant/path'
 import { FormState, updateArticle } from '@/lib/articles/actions'
 import { ArticleSelect } from '@/lib/articles/definitions'
 import { STATUS_CODE } from '@/lib/status-code'
-import { UserSelectForFindUser } from '@/lib/users/definitions'
+import { UserSelectForFindUser } from '@/lib/users'
 
 const initFormState: FormState = { errors: {}, message: '', status: null }
 type Props = {

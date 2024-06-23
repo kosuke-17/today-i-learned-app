@@ -10,7 +10,7 @@ import SubForm from '@/app/_features/article/SubForm'
 import { PATH } from '@/constant/path'
 import { FormState, createArticle } from '@/lib/articles/actions'
 import { STATUS_CODE } from '@/lib/status-code'
-import { UserSelectForFindUser } from '@/lib/users/definitions'
+import { UserSelectForFindUser } from '@/lib/users'
 
 const initFormState: FormState = { errors: {}, message: '', status: null }
 

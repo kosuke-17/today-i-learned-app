@@ -12,7 +12,7 @@ import SubmitButton from '@/components/SubmitButton'
 import { PATH } from '@/constant/path'
 import { STATUS_CODE } from '@/lib/status-code'
 import { useLoginUserStore } from '@/lib/stores/loginUser/store'
-import { FormState, createUser } from '@/lib/users/actions'
+import { FormState, createUser } from '@/lib/users'
 
 const initFormState: FormState = {
   errors: {},
