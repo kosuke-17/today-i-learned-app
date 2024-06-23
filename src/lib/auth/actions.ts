@@ -5,7 +5,8 @@ import { cookies } from 'next/headers'
 
 import { prisma } from '@/lib/prisma'
 import { STATUS_CODE, StatusCodeType } from '@/lib/status-code'
-import { findUserById, findUserForLogin } from '@/lib/users/actions'
+import { findUserForLogin } from '@/lib/users/actions'
+import { findUserById } from '@/lib/users/fetchs'
 import { Token, genToken } from '@/lib/uuid'
 
 import { validateFields } from './validation'

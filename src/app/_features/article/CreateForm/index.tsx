@@ -10,10 +10,15 @@ import SubForm from '@/app/_features/article/SubForm'
 import { PATH } from '@/constant/path'
 import { FormState, createArticle } from '@/lib/articles/actions'
 import { STATUS_CODE } from '@/lib/status-code'
+import { UserSelectForFindUser } from '@/lib/users/definitions'
 
 const initFormState: FormState = { errors: {}, message: '', status: null }
 
-export default function CreateForm() {
+type Props = {
+  loginUser?: UserSelectForFindUser
+}
+
+export default function CreateForm({ loginUser }: Props) {
   const [state, dispatch] = useFormState(createArticle, initFormState)
   const router = useRouter()
 
@@ -33,8 +38,7 @@ export default function CreateForm() {
         <SubForm />
       </div>
 
-      {/* TODO: 修正 */}
-      <input type="hidden" name="authorId" value="clu829fxe0000fhevegqnmqzn" />
+      <input type="hidden" name="authorId" value={loginUser?.id} />
     </form>
   )
 }

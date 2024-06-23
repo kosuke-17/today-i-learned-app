@@ -8,7 +8,11 @@ import { STATUS_CODE, StatusCodeType } from '@/lib/status-code'
 import { genToken } from '@/lib/uuid'
 
 import { selectUserForLogin } from './definitions'
+import { findUserById } from './fetchs'
 import { validateFields } from './validation'
+
+const { BAD_REQUEST, UNAUTHORIZED, SUCCESS, INTERNAL_SERVER_ERROR } =
+  STATUS_CODE
 
 export type FormState = {
   errors?: {
@@ -41,13 +45,6 @@ export const findUserForLogin = async ({
   })
 }
 
-export const findUserById = async ({ id }: { id: User['id'] }) => {
-  return await prisma.user.findFirst({
-    where: { id },
-    select: { name: true },
-  })
-}
-
 export const createUser = async (_: FormState, formData: FormData) => {
   const message = 'Validation Error: ユーザー作成に失敗しました'
   const validatedFields = validateFields(formData, message)
@@ -56,7 +53,7 @@ export const createUser = async (_: FormState, formData: FormData) => {
     return {
       errors: validatedFields.errors,
       message: validatedFields.message,
-      status: STATUS_CODE.BAD_REQUEST,
+      status: BAD_REQUEST,
     }
   }
 
@@ -65,7 +62,7 @@ export const createUser = async (_: FormState, formData: FormData) => {
   if (!data)
     return {
       message: 'Unauthorized Error: ユーザー作成に失敗しました',
-      status: STATUS_CODE.BAD_REQUEST,
+      status: BAD_REQUEST,
     }
   // TODO: bcryptが使えないようなので、コメントアウト
   // const hash = await bcrypt.hash(data.password, 10)
@@ -89,7 +86,7 @@ export const createUser = async (_: FormState, formData: FormData) => {
     if (!createdUser) {
       return {
         message: 'Bad Request Error: ユーザー作成に失敗しました',
-        status: STATUS_CODE.UNAUTHORIZED,
+        status: UNAUTHORIZED,
       }
     }
 
@@ -97,13 +94,13 @@ export const createUser = async (_: FormState, formData: FormData) => {
 
     return {
       message: 'Success: ユーザー作成に成功しました!!',
-      status: STATUS_CODE.SUCCESS,
+      status: SUCCESS,
       data: { user },
     }
   } catch (error) {
     return {
       message: 'Database Error: ユーザー作成に失敗しました',
-      status: STATUS_CODE.INTERNAL_SERVER_ERROR,
+      status: INTERNAL_SERVER_ERROR,
     }
   }
 }

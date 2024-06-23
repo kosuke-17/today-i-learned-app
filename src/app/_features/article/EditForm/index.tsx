@@ -11,13 +11,14 @@ import { getDynamicPath } from '@/constant/path'
 import { FormState, updateArticle } from '@/lib/articles/actions'
 import { ArticleSelect } from '@/lib/articles/definitions'
 import { STATUS_CODE } from '@/lib/status-code'
+import { UserSelectForFindUser } from '@/lib/users/definitions'
 
 const initFormState: FormState = { errors: {}, message: '', status: null }
-
 type Props = {
+  loginUser?: UserSelectForFindUser
   article: ArticleSelect
 }
-export default function EditForm({ article }: Props) {
+export default function EditForm({ loginUser, article }: Props) {
   const bindedUpdateArticle = updateArticle.bind(null, article.id)
   const [state, dispatch] = useFormState(bindedUpdateArticle, initFormState)
   const router = useRouter()
@@ -41,8 +42,7 @@ export default function EditForm({ article }: Props) {
         <SubForm defaultValue={article?.published} />
       </div>
 
-      {/* TODO: 修正 */}
-      <input type="hidden" name="authorId" value="clu829fxe0000fhevegqnmqzn" />
+      <input type="hidden" name="authorId" value={loginUser?.id} />
     </form>
   )
 }

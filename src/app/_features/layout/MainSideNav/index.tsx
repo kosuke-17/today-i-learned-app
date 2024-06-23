@@ -3,6 +3,7 @@ import Divider from '@/app/_features/layout/Divider'
 import NavLink from '@/app/_features/layout/NavLink'
 import { ICON, IconType } from '@/constant/icon'
 import { PATH } from '@/constant/path'
+import { fetchLoginUser } from '@/lib/auth/fetchs'
 
 export type Nav = {
   name: string
@@ -38,7 +39,9 @@ const navs: Nav[] = [
   },
 ]
 
-export default function MainSideNav() {
+export default async function MainSideNav() {
+  const loginUser = await fetchLoginUser()
+
   return (
     <aside
       id="main-sidenav"
@@ -58,7 +61,7 @@ export default function MainSideNav() {
       <div>
         <Divider className="mb-2" />
 
-        <LoginUserMenu />
+        {loginUser && <LoginUserMenu loginUser={loginUser} />}
       </div>
     </aside>
   )
