@@ -1,3 +1,5 @@
+import LoginUserMenu from '@/app/_features/auth/LoginUserMenu'
+import Divider from '@/app/_features/layout/Divider'
 import NavLink from '@/app/_features/layout/NavLink'
 import { ICON, IconType } from '@/constant/icon'
 import { PATH } from '@/constant/path'
@@ -40,7 +42,7 @@ export default function MainSideNav() {
   return (
     <aside
       id="main-sidenav"
-      className="min-w-14 pt-4 bg-primary-main rounded-md"
+      className="min-w-14 py-4 bg-primary-main rounded-md px-2 flex flex-col justify-between"
       aria-label="MainSideNav"
     >
       <div className="overflow-y-auto">
@@ -51,6 +53,12 @@ export default function MainSideNav() {
             </li>
           ))}
         </ul>
+      </div>
+
+      <div>
+        <Divider className="mb-2" />
+
+        <LoginUserMenu />
       </div>
     </aside>
   )
