@@ -5,16 +5,16 @@ import { getIcon } from '@/lib/icon'
 
 type Icon = {
   className?: string
+  type: IconType
 }
 
 type Props = {
-  iconType: IconType
   className?: string
-  icon?: Icon
+  icon: Icon
 }
 
-export default function CustomIcon({ iconType, className, icon }: Props) {
-  const Icon = getIcon(iconType)
+export default function CustomIcon({ className, icon }: Props) {
+  const Icon = getIcon(icon.type)
   return (
     <span
       className={clsx(

@@ -18,7 +18,7 @@ export default function NavLink({ nav }: Props) {
 
   const textNode = iconType ? (
     <CustomIcon
-      iconType={iconType}
+      icon={{ type: iconType }}
       className={isCurrentPath ? 'bg-primary-dark' : 'hover:bg-primary-dark'}
     />
   ) : (

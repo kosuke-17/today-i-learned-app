@@ -10,7 +10,7 @@ export default function LoginUserMenu() {
   return (
     <div>
       <div id="login-user-menu" className="flex items-center cursor-pointer">
-        <CustomIcon iconType="login-user" />
+        <CustomIcon icon={{ type: 'login-user' }} />
       </div>
 
       <Tooltip place="right" clickable anchorSelect="#login-user-menu">
