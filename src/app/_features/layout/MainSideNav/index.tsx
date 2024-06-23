@@ -1,9 +1,9 @@
 import LoginUserMenu from '@/app/_features/auth/LoginUserMenu'
 import Divider from '@/app/_features/layout/Divider'
 import NavLink from '@/app/_features/layout/NavLink'
-import { ICON, IconType } from '@/constant/icon'
+import { ICON, type IconType } from '@/constant/icon'
 import { PATH } from '@/constant/path'
-import { fetchLoginUser } from '@/lib/auth/fetchs'
+import { fetchLoginUser } from '@/lib/auth'
 
 export type Nav = {
   name: string

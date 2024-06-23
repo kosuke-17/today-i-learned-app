@@ -10,7 +10,7 @@ import Main from '@/app/_features/layout/Main'
 import CustomLink from '@/components/Link'
 import SubmitButton from '@/components/SubmitButton'
 import { PATH } from '@/constant/path'
-import { FormState, loginUser } from '@/lib/auth/actions'
+import { type FormState, loginUser } from '@/lib/auth'
 import { STATUS_CODE } from '@/lib/status-code'
 import { useLoginUserStore } from '@/lib/stores/loginUser/store'
 
