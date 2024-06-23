@@ -2,7 +2,7 @@
 
 import { useFormState } from 'react-dom'
 
-import { FormState, createBlock } from '@/lib/blocks/actions'
+import { FormState, createBlock } from '@/lib/blocks'
 
 const initFormState: FormState = { errors: {}, message: '', status: null }
 

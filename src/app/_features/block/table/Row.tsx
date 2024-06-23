@@ -4,7 +4,7 @@ import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
 import { ChangeEvent, useState } from 'react'
 
-import { BlockSelect } from '@/lib/blocks/definitions'
+import { BlockSelect } from '@/lib/blocks'
 
 type Props = {
   block: BlockSelect

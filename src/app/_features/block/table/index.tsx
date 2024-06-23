@@ -1,4 +1,4 @@
-import { fetchBlocks } from '@/lib/blocks/fetchs'
+import { fetchBlocks } from '@/lib/blocks'
 
 import { BlockAddButton } from '../ActionButtons'
 import TableHead from './Head'
