@@ -9,8 +9,11 @@ import Link from '@/components/Link'
 import Overlay from '@/components/Overlay'
 import SubmitButton from '@/components/SubmitButton'
 import { PATH } from '@/constant/path'
-import { BulkDeleteState, bulkDeleteArticle } from '@/lib/articles/actions'
-import { ArticleSelectForNav } from '@/lib/articles/definitions'
+import {
+  BulkDeleteState,
+  bulkDeleteArticle,
+  type ArticleSelectForNav,
+} from '@/lib/articles'
 import { STATUS_CODE } from '@/lib/status-code'
 
 const initFormState: BulkDeleteState = {

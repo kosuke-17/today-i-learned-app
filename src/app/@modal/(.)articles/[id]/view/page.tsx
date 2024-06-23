@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 
 import Detail from '@/app/_features/article/Detail'
 import ModalView from '@/components/ModalView'
-import { fetchArticleById } from '@/lib/articles/fetchs'
+import { fetchArticleById } from '@/lib/articles'
 
 type Props = {
   params: { id: string }

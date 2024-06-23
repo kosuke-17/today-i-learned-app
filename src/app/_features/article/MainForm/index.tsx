@@ -1,8 +1,8 @@
 import { clsx } from 'clsx'
 
 import ErrorField from '@/components/Error/Field'
-import SubmitButton from '@/components/SubmitButton/index'
-import { FormState } from '@/lib/articles/actions'
+import SubmitButton from '@/components/SubmitButton'
+import { FormState } from '@/lib/articles'
 
 type Props = {
   state: FormState

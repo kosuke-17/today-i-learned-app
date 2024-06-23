@@ -9,8 +9,7 @@ import Button from '@/components/Button'
 import Overlay from '@/components/Overlay'
 import SubmitButton from '@/components/SubmitButton'
 import { PATH } from '@/constant/path'
-import { FormState, deleteArticle } from '@/lib/articles/actions'
-import { ArticleSelect } from '@/lib/articles/definitions'
+import { FormState, deleteArticle, type ArticleSelect } from '@/lib/articles'
 import { STATUS_CODE } from '@/lib/status-code'
 
 type Props = { article: ArticleSelect }

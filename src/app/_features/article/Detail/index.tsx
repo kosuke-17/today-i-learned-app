@@ -1,5 +1,5 @@
 import Markdown from '@/components/Markdown'
-import { ArticleSelect } from '@/lib/articles/definitions'
+import { type ArticleSelect } from '@/lib/articles'
 
 type Props = {
   article: ArticleSelect

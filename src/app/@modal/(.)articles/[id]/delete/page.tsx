@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 
 import ModalDelete from '@/components/ModalDelete'
-import { fetchArticleById } from '@/lib/articles/fetchs'
+import { fetchArticleById } from '@/lib/articles'
 
 type Props = {
   params: { id: string }

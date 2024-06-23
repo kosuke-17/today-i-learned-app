@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 
 import EditForm from '@/app/_features/article/EditForm'
-import { fetchArticleById } from '@/lib/articles/fetchs'
+import { fetchArticleById } from '@/lib/articles'
 import { fetchLoginUser } from '@/lib/auth'
 
 type Props = {

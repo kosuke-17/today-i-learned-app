@@ -7,8 +7,7 @@ import _NavLink from '@/app/_features/article/_NavLink'
 import Divider from '@/app/_features/layout/Divider'
 import Link from '@/components/Link'
 import { PATH } from '@/constant/path'
-import type { ArticleSelectForNav } from '@/lib/articles/definitions'
-import { fetchArticlesForNav } from '@/lib/articles/fetchs'
+import { fetchArticlesForNav, type ArticleSelectForNav } from '@/lib/articles'
 
 const CreateNav = (
   <div className="flex items-center px-8 w-full gap-2 text-white hover:bg-primary-dark rounded-lg">

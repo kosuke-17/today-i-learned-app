@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 
 import ArticleBook from '@/components/Book'
-import { fetchArticlesForNav } from '@/lib/articles/fetchs'
+import { fetchArticlesForNav } from '@/lib/articles'
 
 export default async function Page() {
   const articles = await fetchArticlesForNav()
